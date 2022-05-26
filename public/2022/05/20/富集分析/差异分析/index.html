@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一、什么是差异分析差异分析简单来说就是我们通过一组实验后，实验组中所提取的总mRNA 较 对照组提取的总mRNA有显著性提高或者是降低的部分mRNA，寻找这部分有差异的mRNA就被称为差异分析 在常见的差异分析中，有几个比较常用的库下面来介绍一下 1.GEO数据库  GEO数据库可以理解为一个实验原始数据的储存库。   如图所示，这是一个 研究某基因 对酮酸脱氢酶活性是否有促进性的实验。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="差异分析">
+<meta property="og:url" content="http://example.com/2022/05/20/%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/%E5%B7%AE%E5%BC%82%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="Lantary">
+<meta property="og:description" content="一、什么是差异分析差异分析简单来说就是我们通过一组实验后，实验组中所提取的总mRNA 较 对照组提取的总mRNA有显著性提高或者是降低的部分mRNA，寻找这部分有差异的mRNA就被称为差异分析 在常见的差异分析中，有几个比较常用的库下面来介绍一下 1.GEO数据库  GEO数据库可以理解为一个实验原始数据的储存库。   如图所示，这是一个 研究某基因 对酮酸脱氢酶活性是否有促进性的实验。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166443694-5c94a8e0-0e2b-4364-837e-e701537ac0a1.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166445401-bf365267-070d-47a6-9d04-f496323ee36b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166446074-3e9de36f-fb6d-4fe1-8ecb-dff09c444997.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166447821-199cb428-0458-48fa-8e46-abb11511e564.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166448469-d5f0dff7-f3a1-4a5e-acea-6e841a2d7737.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166448601-266dc6e6-5625-46c5-84c1-b758cd39261c.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166449476-7360a7ae-858c-4aca-82ab-68ef6f66dedd.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166449646-95bf82db-4fe6-4724-ab94-f921736897f4.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166450324-cba4ae19-fbc4-477e-b831-e26ceb873989.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166450398-3acded90-8d4b-4bfc-a0d1-196384dfef91.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166450968-704e6eee-eb8d-4275-9ba9-13dd057e67dc.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166451186-2118dcce-fda7-4145-8c54-b625bfb60de0.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166452304-f9c03157-becb-4bd1-a01b-c32b2d9d55b2.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166248412-302a40e9-2b30-488e-86fe-3c5439089f9a.png">
+<meta property="article:published_time" content="2022-05-20T14:40:58.433Z">
+<meta property="article:modified_time" content="2022-05-20T15:25:44.691Z">
+<meta property="article:author" content="lantary">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/102901955/166443694-5c94a8e0-0e2b-4364-837e-e701537ac0a1.png">
+
+<link rel="canonical" href="http://example.com/2022/05/20/%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/%E5%B7%AE%E5%BC%82%E5%88%86%E6%9E%90/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>差异分析 | Lantary</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lantary</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/20/%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/%E5%B7%AE%E5%BC%82%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.png">
+      <meta itemprop="name" content="lantary">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lantary">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          差异分析
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-20 22:40:58 / Modified: 23:25:44" itemprop="dateCreated datePublished" datetime="2022-05-20T22:40:58+08:00">2022-05-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">生物信息学</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">富集分析</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="一、什么是差异分析"><a href="#一、什么是差异分析" class="headerlink" title="一、什么是差异分析"></a>一、什么是差异分析</h1><p>差异分析简单来说就是我们通过一组实验后，实验组中所提取的总mRNA 较 对照组提取的总mRNA有显著性提高或者是降低的部分mRNA，寻找这部分有差异的mRNA就被称为差异分析</p>
+<p>在常见的差异分析中，有几个比较常用的库下面来介绍一下</p>
+<h2 id="1-GEO数据库"><a href="#1-GEO数据库" class="headerlink" title="1.GEO数据库"></a>1.GEO数据库</h2><p>  GEO数据库可以理解为一个实验原始数据的储存库。</p>
+<p>  如图所示，这是一个 研究某基因 对酮酸脱氢酶活性是否有促进性的实验。</p>
+<p>  <img src="https://user-images.githubusercontent.com/102901955/166443694-5c94a8e0-0e2b-4364-837e-e701537ac0a1.png" alt="image"></p>
+<p>  GSE号：是这组实验的编号，在GEO每个不同的实验编号唯一，用于检索。</p>
+<p>  GPL号：实验芯片平台，在GEO数据库的实验信息，往往是通过基因芯片高通量测序的方式测量转录组。简单来讲就是基因芯片中包含了这个实验测量了哪些基因的表达量</p>
+<p>  GSM号：是每一种样品处理方式的编号，一组实验中（一个GSE号）往往有多种处理（GSM号），例如，在研究pH压迫某微生物生长时，当你设置了5个梯度，则在一个GSE号中至少会有5个GSM号，即五种处理方式。如果设置了3个重复，则会有15个GSM号，GSM在GEO数据库中也是唯一的，可以通过GSM来唯一检索。</p>
+<p>  表达矩阵：表达矩阵中包含了每种处理下，样品被提取出的总mRNA的表达情况。简单来讲就是测量的“值域”，而平台信息就是测量的“定义域”</p>
+<h1 id="二、如何进行差异分析"><a href="#二、如何进行差异分析" class="headerlink" title="二、如何进行差异分析"></a>二、如何进行差异分析</h1><h2 id="1-下载原始文件"><a href="#1-下载原始文件" class="headerlink" title="1.下载原始文件"></a>1.下载原始文件</h2><p>   下载表达矩阵文件</p>
+<p>   <img src="https://user-images.githubusercontent.com/102901955/166445401-bf365267-070d-47a6-9d04-f496323ee36b.png" alt="image"></p>
+<p>   下载实验芯片平台信息</p>
+<p>   <img src="https://user-images.githubusercontent.com/102901955/166446074-3e9de36f-fb6d-4fe1-8ecb-dff09c444997.png" alt="image"></p>
+<p>   在处理样本量比较小的情况下，可以手动记录一下，每个GSM号对应的处理方式</p>
+<p>   在处理样本量比较大的请胯下，# 待编辑 #</p>
+<h2 id="2-将原始数据导入你的R中并且进行格式化处理"><a href="#2-将原始数据导入你的R中并且进行格式化处理" class="headerlink" title="2.将原始数据导入你的R中并且进行格式化处理"></a>2.将原始数据导入你的R中并且进行格式化处理</h2><p>   分析过程中依赖的包：limma，stringr</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>limma<span class="punctuation">)</span></span><br><span class="line">library<span class="punctuation">(</span>stringr<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 首先设置你的工作目录</span></span><br><span class="line">setwd<span class="punctuation">(</span><span class="string">&quot;E:/Project/R/差异分析&quot;</span><span class="punctuation">)</span> </span><br><span class="line">  </span><br><span class="line"><span class="comment"># 导入表达矩阵</span></span><br><span class="line">expmatrix_data <span class="operator">&lt;-</span> read.table<span class="punctuation">(</span><span class="string">&quot;GSE115269_series_matrix.txt&quot;</span><span class="punctuation">,</span> header <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">,</span> skip <span class="operator">=</span> <span class="number">64</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入平台文件 </span></span><br><span class="line">pla_data <span class="operator">&lt;-</span> read.table<span class="punctuation">(</span><span class="string">&quot;GPL18233-21178.txt&quot;</span><span class="punctuation">,</span> sep <span class="operator">=</span> <span class="string">&quot;\t&quot;</span><span class="punctuation">,</span> header <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p>   在表达矩阵导入中，因为我用的表达矩阵从第65行开始才是矩阵数据，所以设置了skip。</p>
+<p>   <img src="https://user-images.githubusercontent.com/102901955/166447821-199cb428-0458-48fa-8e46-abb11511e564.png" alt="image"></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 格式化平台文件（将转录组编号列提出，只保留ENSMUST编号）</span></span><br><span class="line">mRNA_assigment <span class="operator">&lt;-</span> pla_data<span class="punctuation">[</span><span class="punctuation">,</span> <span class="string">&quot;mrna_assignment&quot;</span><span class="punctuation">]</span>   </span><br><span class="line"></span><br><span class="line">pattern <span class="operator">&lt;-</span> <span class="string">&quot;ENSMUST\\d*&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="punctuation">(</span>i <span class="keyword">in</span> <span class="number">1</span><span class="operator">:</span><span class="built_in">length</span><span class="punctuation">(</span>mRNA_assigment<span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="comment"># 用正则表达式循环替换单元格内的内容</span></span><br><span class="line">  mRNA_assigment<span class="punctuation">[</span>i<span class="punctuation">]</span> <span class="operator">&lt;-</span> str_match<span class="punctuation">(</span>string <span class="operator">=</span> mRNA_assigment<span class="punctuation">[</span>i<span class="punctuation">]</span><span class="punctuation">,</span> pattern <span class="operator">=</span> pattern<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line">pla_data<span class="punctuation">[</span><span class="punctuation">,</span> <span class="string">&quot;mrna_assignment&quot;</span><span class="punctuation">]</span> <span class="operator">&lt;-</span> mRNA_assigment</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 让平台文件以ID列重排序</span></span><br><span class="line">pla_data <span class="operator">&lt;-</span> pla_data<span class="punctuation">[</span>order<span class="punctuation">(</span>pla_data<span class="punctuation">[</span><span class="punctuation">,</span> <span class="string">&#x27;ID&#x27;</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="punctuation">,</span> <span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<p>   格式化的目的是从上图到下图，</p>
+<p>   <img src="https://user-images.githubusercontent.com/102901955/166448469-d5f0dff7-f3a1-4a5e-acea-6e841a2d7737.png" alt="image"><br>   <img src="https://user-images.githubusercontent.com/102901955/166448601-266dc6e6-5625-46c5-84c1-b758cd39261c.png" alt="image"></p>
+<p>   即让多个转录组编号转成一个，并且让平台文件按基因编号排序，这样处理是为了后续富集分析的方便。可能会出现转录组缺失的情况，因为多个编号转成了一个。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将样品处理方式导入R --手动 这里写样品的处理方式，不同实验有所不同</span></span><br><span class="line">samp_treat <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;DJ-1+/+_01&quot;</span><span class="punctuation">,</span> <span class="string">&quot;DJ-1+/+_02&quot;</span><span class="punctuation">,</span> <span class="string">&quot;DJ-1+/+_03&quot;</span><span class="punctuation">,</span> <span class="string">&quot;DJ-1-/-_01&quot;</span><span class="punctuation">,</span> <span class="string">&quot;DJ-1-/-_02&quot;</span><span class="punctuation">,</span> <span class="string">&quot;DJ-1-/-_03&quot;</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 以csv文件保存格式化后的平台注释文件</span></span><br><span class="line">write.table<span class="punctuation">(</span>pla_data<span class="punctuation">,</span> <span class="string">&quot;pla_data.csv&quot;</span><span class="punctuation">,</span> row.names <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">,</span> col.names <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">,</span> sep <span class="operator">=</span> <span class="string">&quot;,&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p>   因为R使用不熟练的原因，后续富集部分操作可能需要在excel中进行，故导出格式化后的平台注释文件。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 格式化表达矩阵</span></span><br><span class="line">rownames<span class="punctuation">(</span>expmatrix_data<span class="punctuation">)</span> <span class="operator">&lt;-</span> expmatrix_data<span class="punctuation">[</span><span class="punctuation">,</span> <span class="string">&quot;ID_REF&quot;</span><span class="punctuation">]</span></span><br><span class="line"></span><br><span class="line">expmatrix_data <span class="operator">&lt;-</span> expmatrix_data<span class="punctuation">[</span><span class="punctuation">,</span> <span class="operator">-</span><span class="number">1</span><span class="punctuation">]</span></span><br><span class="line"></span><br><span class="line">colnames<span class="punctuation">(</span>expmatrix_data<span class="punctuation">)</span> <span class="operator">&lt;-</span> samp_treat</span><br><span class="line"></span><br><span class="line">expmatrix_data <span class="operator">&lt;-</span> log2<span class="punctuation">(</span>expmatrix_data<span class="punctuation">)</span> </span><br></pre></td></tr></table></figure>
+<p>  格式化目的是上图到下图</p>
+<p>  <img src="https://user-images.githubusercontent.com/102901955/166449476-7360a7ae-858c-4aca-82ab-68ef6f66dedd.png" alt="image"><br>  <img src="https://user-images.githubusercontent.com/102901955/166449646-95bf82db-4fe6-4724-ab94-f921736897f4.png" alt="image"></p>
+<h2 id="3-用limma包进行差异分析"><a href="#3-用limma包进行差异分析" class="headerlink" title="3.用limma包进行差异分析"></a>3.用limma包进行差异分析</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 根据样本处理方式设计design矩阵</span></span><br><span class="line">group_list <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="built_in">rep</span><span class="punctuation">(</span><span class="string">&quot;Control&quot;</span><span class="punctuation">,</span> <span class="number">3</span><span class="punctuation">)</span><span class="punctuation">,</span> <span class="built_in">rep</span><span class="punctuation">(</span><span class="string">&quot;Treatment&quot;</span><span class="punctuation">,</span> <span class="number">3</span><span class="punctuation">)</span><span class="punctuation">)</span> </span><br><span class="line"></span><br><span class="line">design <span class="operator">&lt;-</span> model.matrix<span class="punctuation">(</span><span class="operator">~</span><span class="number">0</span> <span class="operator">+</span> factor<span class="punctuation">(</span>group_list<span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">colnames<span class="punctuation">(</span>design<span class="punctuation">)</span> <span class="operator">=</span> levels<span class="punctuation">(</span>factor<span class="punctuation">(</span>group_list<span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">rownames<span class="punctuation">(</span>design<span class="punctuation">)</span> <span class="operator">=</span> colnames<span class="punctuation">(</span>expmatrix_data<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p>设置design矩阵的目的是为了对样本分组，但model.matrix函数的构造原理不是很清楚，这个需要进一步学习。总之就是构造出下图一样的分组。</p>
+<p><img src="https://user-images.githubusercontent.com/102901955/166450324-cba4ae19-fbc4-477e-b831-e26ceb873989.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/102901955/166450398-3acded90-8d4b-4bfc-a0d1-196384dfef91.png" alt="image"></p>
+<p>这个design矩阵是含有level信息的。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 模型拟合及分析</span></span><br><span class="line">fit <span class="operator">&lt;-</span> lmFit<span class="punctuation">(</span>expmatrix_data<span class="punctuation">,</span> design<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">contrast.matrix <span class="operator">&lt;-</span> makeContrasts<span class="punctuation">(</span><span class="string">&quot;Control-Treatment&quot;</span><span class="punctuation">,</span> levels <span class="operator">=</span> design<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">fit2 <span class="operator">&lt;-</span> contrasts.fit<span class="punctuation">(</span>fit<span class="punctuation">,</span> contrast.matrix<span class="punctuation">)</span> </span><br><span class="line"></span><br><span class="line">fit2 <span class="operator">&lt;-</span> eBayes<span class="punctuation">(</span>fit2<span class="punctuation">)</span> </span><br><span class="line"></span><br><span class="line">expDiff_data <span class="operator">&lt;-</span> topTable<span class="punctuation">(</span>fit2<span class="punctuation">,</span> coef <span class="operator">=</span> <span class="number">1</span><span class="punctuation">,</span> n <span class="operator">=</span> <span class="literal">Inf</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span> na.omit<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 保存差异分析结果文件</span></span><br><span class="line">write.table<span class="punctuation">(</span>expDiff_data<span class="punctuation">,</span> <span class="string">&quot;expDiff.csv&quot;</span><span class="punctuation">,</span> row.names <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">,</span> col.names <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">,</span> sep <span class="operator">=</span> <span class="string">&quot;,&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p>分析后得到的expDiff_data如图所示</p>
+<p><img src="https://user-images.githubusercontent.com/102901955/166450968-704e6eee-eb8d-4275-9ba9-13dd057e67dc.png" alt="image"></p>
+<p>后续操作转至excel</p>
+<p>打开expDiff.csv文件</p>
+<p><img src="https://user-images.githubusercontent.com/102901955/166451186-2118dcce-fda7-4145-8c54-b625bfb60de0.png" alt="image"></p>
+<p>将expDiff.csv文件列名调整好，并且将第一列转为数字格式，进行升序排序</p>
+<p>然后将平台信息中的，转录组编号复制至expDiff.csv文件中，注意检查基因编号是不是相同的。</p>
+<p>最后得到expDiff.csv文件如图所示</p>
+<p><img src="https://user-images.githubusercontent.com/102901955/166452304-f9c03157-becb-4bd1-a01b-c32b2d9d55b2.png" alt="image"></p>
+<p>Fold change 表示 实验组基因表达量 与 对照组基因表达量 的比值 </p>
+<p><img src="https://user-images.githubusercontent.com/102901955/166248412-302a40e9-2b30-488e-86fe-3c5439089f9a.png" alt="image"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/20/%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/001_DAVID%E5%9C%A8%E7%BA%BF%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/" rel="next" title="DAVID富集分析(一)">
+      DAVID富集分析(一) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%B7%AE%E5%BC%82%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">一、什么是差异分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-GEO%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.1.</span> <span class="nav-text">1.GEO数据库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E5%B7%AE%E5%BC%82%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">二、如何进行差异分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%B8%8B%E8%BD%BD%E5%8E%9F%E5%A7%8B%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">1.下载原始文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%B0%86%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E4%BD%A0%E7%9A%84R%E4%B8%AD%E5%B9%B6%E4%B8%94%E8%BF%9B%E8%A1%8C%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%A4%84%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text">2.将原始数据导入你的R中并且进行格式化处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%94%A8limma%E5%8C%85%E8%BF%9B%E8%A1%8C%E5%B7%AE%E5%BC%82%E5%88%86%E6%9E%90"><span class="nav-number">2.3.</span> <span class="nav-text">3.用limma包进行差异分析</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lantary"
+      src="/images/%E5%A4%B4%E5%83%8F.png">
+  <p class="site-author-name" itemprop="name">lantary</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Lantary" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Lantary" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+<!-- CloudCalendar -->
+<div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+	<div class="widget" id="CloudCalendar"></div>
+</div><!-- CloudCalendar -->
+<div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+<div class="widget" id="CloudCalendar"></div>
+</div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lantary</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<!-- calendar widget -->
+
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/calendar.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/languages.min.js"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('zh-CN',
+            $.extend(
+                '', {
+                    single:true,
+                    root:'/calendar/'
+                }
+            )
+        );
+    });
+    </script>
+
+
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?lantary";
+            var git_color =['#fafbfc', '#ebedf0', '#f6f8fa', '#e1e4e8', '#d1d5da', '#959da5', '#6a737d', '#586069', '#444d56', '#2f363d', '#24292e'];
+            var git_user ="lantary";
+            var parent_div_git = document.getElementsByClassName('main-inner')[0];
+            var git_div_html = '<div class="post-block animated fadeIn" style="width:100%;height:auto;padding:40px 10px 10px 10px;"><div id="github_loading" style="height:100%;display: flex;align-items: center;justify-content: center;"><svg style="height:50px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div><footer class="post-footer"><div class="post-eof"></div></footer>';
+            if(parent_div_git && location.pathname =='/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementsByClassName('main-inner')[0]){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:280px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style></style><!-- hexo injector body_end end --></body>
+</html>
+<!-- calendar widget -->
+
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/calendar.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/languages.min.js"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('zh-CN',
+            $.extend(
+                '', {
+                    single:true,
+                    root:'/calendar/'
+                }
+            )
+        );
+    });
+    </script>
+

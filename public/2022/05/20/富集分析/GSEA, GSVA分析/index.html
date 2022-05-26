@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一种富集分析 一、什么是GSEA 1.GSEA(基因集富集分析)GSEA也是一种富集分析方式，与GO和KEGG富集分析相似却也有不同。一般的富集分析(GO与KEGG富集分析)更加关注少数几个显著变化的基因，在分析中往往要确定一个阈值，去除显著性或富集程度在阈值下基因。只选取头部的几个基因。这样的分析方法有可能会将基因变化量不大但又有重要生物学意义的一些基因忽略。而GSEA 在分析过程中不需要设置阈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GSEA,GSVA分析">
+<meta property="og:url" content="http://example.com/2022/05/20/%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/GSEA,%20GSVA%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="Lantary">
+<meta property="og:description" content="一种富集分析 一、什么是GSEA 1.GSEA(基因集富集分析)GSEA也是一种富集分析方式，与GO和KEGG富集分析相似却也有不同。一般的富集分析(GO与KEGG富集分析)更加关注少数几个显著变化的基因，在分析中往往要确定一个阈值，去除显著性或富集程度在阈值下基因。只选取头部的几个基因。这样的分析方法有可能会将基因变化量不大但又有重要生物学意义的一些基因忽略。而GSEA 在分析过程中不需要设置阈">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/168717081-1d444516-10c4-4638-a01e-a9889efd3966.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/169223848-ed0e5293-f179-4cdf-a288-37046819a6c5.png">
+<meta property="article:published_time" content="2022-05-20T14:40:58.461Z">
+<meta property="article:modified_time" content="2022-05-20T15:29:39.273Z">
+<meta property="article:author" content="lantary">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/102901955/168717081-1d444516-10c4-4638-a01e-a9889efd3966.png">
+
+<link rel="canonical" href="http://example.com/2022/05/20/%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/GSEA,%20GSVA%E5%88%86%E6%9E%90/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>GSEA,GSVA分析 | Lantary</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lantary</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/20/%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/GSEA,%20GSVA%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.png">
+      <meta itemprop="name" content="lantary">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lantary">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          GSEA,GSVA分析
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-20 22:40:58 / Modified: 23:29:39" itemprop="dateCreated datePublished" datetime="2022-05-20T22:40:58+08:00">2022-05-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">生物信息学</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">富集分析</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>一种富集分析</p>
+<h1 id="一、什么是GSEA"><a href="#一、什么是GSEA" class="headerlink" title="一、什么是GSEA"></a>一、什么是GSEA</h1><p><br></br></p>
+<h2 id="1-GSEA-基因集富集分析"><a href="#1-GSEA-基因集富集分析" class="headerlink" title="1.GSEA(基因集富集分析)"></a>1.GSEA(基因集富集分析)</h2><p>GSEA也是一种富集分析方式，与GO和KEGG富集分析相似却也有不同。一般的富集分析(GO与KEGG富集分析)更加关注少数几个显著变化的基因，在分析中往往要确定一个阈值，去除显著性或富集程度在阈值下基因。只选取头部的几个基因。这样的分析方法有可能会将基因变化量不大但又有重要生物学意义的一些基因忽略。而GSEA 在分析过程中不需要设置阈值，会将差异分析结果按log(FC)排序。关注的是基因表达量相近的基因数量。GSEA分析方法，可以有效的保留一般富集分析在设置阈值时去除的一些生物信息。GSEA是用一个预先定义的基因集中的基因来评估在与表型相关度排序的基因表中的分布趋势，从而判断其对表型的贡献。</p>
+<h2 id="2-GSEA结果图解析"><a href="#2-GSEA结果图解析" class="headerlink" title="2.GSEA结果图解析"></a>2.GSEA结果图解析</h2><p><img src="https://user-images.githubusercontent.com/102901955/168717081-1d444516-10c4-4638-a01e-a9889efd3966.png" alt="image"></p>
+<p>以上图为例，GSEA 的结果图一般分为三个部分</p>
+<p>1.第一部分: Enrichment Score, 也就是主图像的纵轴, 表示基因的富集程度, 计算方式是每当有一个在通路中的基因(黑线)则ES累加一个值, 每当有一个不在通路中的基因(非黑线部分)则ES减一个值, 最后做出曲线. 即在通路中的基因相邻越近, 曲线”斜率”越大, 基因越分散, 曲线”斜率”越小. 通常会显出一个山坡图, 若山顶为于红色区域, 说明GSEA结果为该通路上调表达. 反之则为下调表达. </p>
+<p>2.第二部分: 横坐标, 红蓝条表示的是输入的基因集, 红色部分表示差异分析中log(FC)为正, 蓝色部分表示差异分析中log(FC)为负. 黑线表示与选取的通路相关的基因, 本例中黑线即表示CHRXP11 通路相关的基因. </p>
+<p>3.第三部分: Ranked list metric 表示的也是差异分析中不同基因log(FC)的量, 将横坐标中的红蓝图量化表达出来. </p>
+<h2 id="3-GSEA-R语言实现"><a href="#3-GSEA-R语言实现" class="headerlink" title="3.GSEA R语言实现"></a>3.GSEA R语言实现</h2><p>1.数据格式</p>
+<p><img src="https://user-images.githubusercontent.com/102901955/169223848-ed0e5293-f179-4cdf-a288-37046819a6c5.png" alt="image"></p>
+<p>需要一个键名为基因ENTREZID, 键值为logFC的字典格式向量, K可以用下面代码构造字典, 其中df_all的logFC列为 差异分析后的logFC值, ENTREZID列为对应基因的ENTREZID编号</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gene_fc <span class="operator">&lt;-</span> df_all<span class="operator">$</span>logFC                                  <span class="comment"># 构造字典向量</span></span><br><span class="line"><span class="built_in">names</span><span class="punctuation">(</span>gene_fc<span class="punctuation">)</span> <span class="operator">&lt;-</span> df_all<span class="operator">$</span>ENTREZID                        <span class="comment"># 构造字典向量</span></span><br></pre></td></tr></table></figure>
+
+<p>2.代码</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加载R包</span></span><br><span class="line">library<span class="punctuation">(</span>enrichplot<span class="punctuation">)</span>      <span class="comment"># 用于画图</span></span><br><span class="line">library<span class="punctuation">(</span>clusterProfiler<span class="punctuation">)</span> <span class="comment"># GSEA分析</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入文件</span></span><br><span class="line">df <span class="operator">=</span> read.csv<span class="punctuation">(</span><span class="string">&quot;路径&quot;</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># GAEA</span></span><br><span class="line">df_all <span class="operator">&lt;-</span> df_all<span class="punctuation">[</span>order<span class="punctuation">(</span>df_all<span class="operator">$</span>logFC<span class="punctuation">,</span> decreasing <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">)</span><span class="punctuation">,</span> <span class="punctuation">]</span>  <span class="comment"># 数据按logFC排列</span></span><br><span class="line">gene_fc <span class="operator">&lt;-</span> df_all<span class="operator">$</span>logFC                                  <span class="comment"># 构造字典向量</span></span><br><span class="line"><span class="built_in">names</span><span class="punctuation">(</span>gene_fc<span class="punctuation">)</span> <span class="operator">&lt;-</span> df_all<span class="operator">$</span>ENTREZID                        <span class="comment"># 构造字典向量</span></span><br><span class="line">KEGG <span class="operator">&lt;-</span> gseKEGG<span class="punctuation">(</span>gene_fc<span class="punctuation">,</span> organism <span class="operator">=</span> <span class="string">&quot;mmu&quot;</span><span class="punctuation">)</span>               <span class="comment"># 人类样本organism参数为hsa 详情见http://www.genome.jp/kegg/catalog/org_list.html</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘图</span></span><br><span class="line">gseaplot2<span class="punctuation">(</span></span><br><span class="line">  KEGG<span class="punctuation">,</span>                           <span class="comment"># gseaResult object，即GSEA结果</span></span><br><span class="line">  <span class="string">&quot;mmu00830&quot;</span><span class="punctuation">,</span>                     <span class="comment"># 富集的ID编号，选择表示的通路</span></span><br><span class="line">  title <span class="operator">=</span> <span class="string">&quot;Retinol metabolism&quot;</span><span class="punctuation">,</span>   <span class="comment"># 标题</span></span><br><span class="line">  color <span class="operator">=</span> <span class="string">&quot;green&quot;</span><span class="punctuation">,</span>                <span class="comment"># GSEA线条颜色</span></span><br><span class="line">  base_size <span class="operator">=</span> <span class="number">11</span><span class="punctuation">,</span>                 <span class="comment"># 基础字体大小</span></span><br><span class="line">  rel_heights <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1.5</span><span class="punctuation">,</span> <span class="number">0.5</span><span class="punctuation">,</span> <span class="number">1</span><span class="punctuation">)</span><span class="punctuation">,</span>   <span class="comment"># 副图的相对高度</span></span><br><span class="line">  subplots <span class="operator">=</span> <span class="number">1</span><span class="operator">:</span><span class="number">3</span><span class="punctuation">,</span>                 <span class="comment"># 要显示哪些副图 如subplots=c(1,3) -只要第一和第三个图，subplots=1 -只要第一个图</span></span><br><span class="line">  pvalue_table <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">,</span>           <span class="comment"># 是否添加 pvalue table</span></span><br><span class="line">  ES_geom <span class="operator">=</span> <span class="string">&quot;line&quot;</span>                <span class="comment"># running enrichment score用线还是用点ES_geom = &quot;dot&quot;</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><br></br></p>
+<h1 id="二、什么是GSVA"><a href="#二、什么是GSVA" class="headerlink" title="二、什么是GSVA"></a>二、什么是GSVA</h1><p><br></br></p>
+<h2 id="1-GSVA-基因集变异分析"><a href="#1-GSVA-基因集变异分析" class="headerlink" title="1.GSVA(基因集变异分析)"></a>1.GSVA(基因集变异分析)</h2><p>GSVA 是一种基因富集分析算法. 输入数据是表达矩阵, 与一般的富集分析不同, GSVA不需要对样品进行分组, 它可以先进行通路的富集, 形成一个以通路为行名, 样品为列名的表达矩阵. 是一种非参数的无监督分析方法, 主要用来评估芯片和转录组的基因集富集结果. 主要是通过将基因在不同样品间的表达量矩阵转化成基因集在样品间的表达量矩阵, 从而来评估不同的代谢通路在不同样品间是否富集. </p>
+<h2 id="2-GSVA结果解释"><a href="#2-GSVA结果解释" class="headerlink" title="2.GSVA结果解释"></a>2.GSVA结果解释</h2><p>GSVA分析的结果是一个表达矩阵, 常见的结果可视化为制作热图, 热图的含义这里不做赘述. </p>
+<h2 id="3-GSVA-R语言实现"><a href="#3-GSVA-R语言实现" class="headerlink" title="3.GSVA R语言实现"></a>3.GSVA R语言实现</h2><p>1.导入的数据结构</p>
+<figure class = "half">
+    <img src = "https://user-images.githubusercontent.com/102901955/169063653-e5c0315d-0296-4a79-bfee-af60834bf9b6.png">
+    <img src = "https://user-images.githubusercontent.com/102901955/169064832-f85b88b0-58dc-46fe-bd1e-43563ccf7357.png">
+</figure>
+
+<p>表达矩阵: 导入的数据格式如上图所示, 行名为样本编号, 列名为Gene Symbol ID, 单元格内值为log2化的表达量. 原始数据可以在GEO数据库中找到.<br>基因集:   导入的数据如下图所示, 格式为gmt, 可以在<a target="_blank" rel="noopener" href="https://www.gsea-msigdb.org/gsea/msigdb/genesets.jsp">MSigdb</a>上找到常用的基因集, 也可以自己制作.</p>
+<p>2.代码</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加载R包</span></span><br><span class="line">library<span class="punctuation">(</span>GSVA<span class="punctuation">)</span>            <span class="comment"># 用于GSVA分析</span></span><br><span class="line">library<span class="punctuation">(</span>GSEABase<span class="punctuation">)</span>        <span class="comment"># 用于读取文件</span></span><br><span class="line">library<span class="punctuation">(</span>pheatmap<span class="punctuation">)</span>        <span class="comment"># 制作热图</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 文件读取</span></span><br><span class="line">setwd<span class="punctuation">(</span><span class="string">&quot;工作路径&quot;</span><span class="punctuation">)</span>                                   <span class="comment"># 设置工作路径</span></span><br><span class="line">keggSet <span class="operator">=</span> getGmt<span class="punctuation">(</span><span class="string">&quot;基因集文件路径&quot;</span><span class="punctuation">)</span>                  <span class="comment"># 读取基因集文件</span></span><br><span class="line">expmatrix_data <span class="operator">=</span> read.table<span class="punctuation">(</span>                       <span class="comment"># 读取表达矩阵</span></span><br><span class="line">  <span class="string">&quot;表达矩阵路径&quot;</span><span class="punctuation">,</span> </span><br><span class="line">  header <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">,</span>                                         </span><br><span class="line"><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p>如果格式不对, 自行调整</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GSVA分析</span></span><br><span class="line">gsva_data <span class="operator">&lt;-</span> gsva<span class="punctuation">(</span></span><br><span class="line">  expr <span class="operator">=</span> as.matrix<span class="punctuation">(</span>exp_new<span class="punctuation">)</span><span class="punctuation">,</span>         <span class="comment"># 输入表达矩阵</span></span><br><span class="line">  gset.idx.list <span class="operator">=</span> keggSet<span class="punctuation">,</span>           <span class="comment"># 输入基因集</span></span><br><span class="line">  method <span class="operator">=</span> <span class="string">&quot;gsva&quot;</span><span class="punctuation">,</span>                   <span class="comment"># 选择算法</span></span><br><span class="line">  kcdf <span class="operator">=</span> <span class="string">&quot;none&quot;</span>                      <span class="comment"># 选择CDF计算模型,正态，高斯还是泊松</span></span><br><span class="line"><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p>GSVA分析的算法见参考连接, ?gsva可以查看更多参数, 一般来说log2化的矩阵计算模型选用正态, 没有进行log2化的选泊松</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制热图</span></span><br><span class="line">pheatmap<span class="punctuation">(</span></span><br><span class="line">  gsva_data<span class="punctuation">,</span></span><br><span class="line">  show_colnames <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">,</span></span><br><span class="line">  show_rownames <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">,</span></span><br><span class="line">  kmeans_k <span class="operator">=</span> <span class="literal">NA</span></span><br><span class="line"><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h1 id="参考连接"><a href="#参考连接" class="headerlink" title="参考连接"></a>参考连接</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/358168557">GSEA R绘图 代码</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/355879724">GSVA算法介绍</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/20/%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/" rel="prev" title="DAVID富集分析(二)">
+      <i class="fa fa-chevron-left"></i> DAVID富集分析(二)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/20/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/" rel="next" title="生物网络">
+      生物网络 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFGSEA"><span class="nav-number">1.</span> <span class="nav-text">一、什么是GSEA</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-GSEA-%E5%9F%BA%E5%9B%A0%E9%9B%86%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90"><span class="nav-number">1.1.</span> <span class="nav-text">1.GSEA(基因集富集分析)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-GSEA%E7%BB%93%E6%9E%9C%E5%9B%BE%E8%A7%A3%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">2.GSEA结果图解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-GSEA-R%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.</span> <span class="nav-text">3.GSEA R语言实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFGSVA"><span class="nav-number">2.</span> <span class="nav-text">二、什么是GSVA</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-GSVA-%E5%9F%BA%E5%9B%A0%E9%9B%86%E5%8F%98%E5%BC%82%E5%88%86%E6%9E%90"><span class="nav-number">2.1.</span> <span class="nav-text">1.GSVA(基因集变异分析)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-GSVA%E7%BB%93%E6%9E%9C%E8%A7%A3%E9%87%8A"><span class="nav-number">2.2.</span> <span class="nav-text">2.GSVA结果解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-GSVA-R%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.3.</span> <span class="nav-text">3.GSVA R语言实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.4.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.</span> <span class="nav-text">参考连接</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lantary"
+      src="/images/%E5%A4%B4%E5%83%8F.png">
+  <p class="site-author-name" itemprop="name">lantary</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Lantary" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Lantary" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+<!-- CloudCalendar -->
+<div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+	<div class="widget" id="CloudCalendar"></div>
+</div><!-- CloudCalendar -->
+<div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+<div class="widget" id="CloudCalendar"></div>
+</div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lantary</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<!-- calendar widget -->
+
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/calendar.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/languages.min.js"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('zh-CN',
+            $.extend(
+                '', {
+                    single:true,
+                    root:'/calendar/'
+                }
+            )
+        );
+    });
+    </script>
+
+
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?lantary";
+            var git_color =['#fafbfc', '#ebedf0', '#f6f8fa', '#e1e4e8', '#d1d5da', '#959da5', '#6a737d', '#586069', '#444d56', '#2f363d', '#24292e'];
+            var git_user ="lantary";
+            var parent_div_git = document.getElementsByClassName('main-inner')[0];
+            var git_div_html = '<div class="post-block animated fadeIn" style="width:100%;height:auto;padding:40px 10px 10px 10px;"><div id="github_loading" style="height:100%;display: flex;align-items: center;justify-content: center;"><svg style="height:50px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div><footer class="post-footer"><div class="post-eof"></div></footer>';
+            if(parent_div_git && location.pathname =='/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementsByClassName('main-inner')[0]){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:280px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style></style><!-- hexo injector body_end end --></body>
+</html>
+<!-- calendar widget -->
+
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/calendar.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/languages.min.js"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('zh-CN',
+            $.extend(
+                '', {
+                    single:true,
+                    root:'/calendar/'
+                }
+            )
+        );
+    });
+    </script>
+

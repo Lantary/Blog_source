@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一、什么是生物网络 1.生物网络的定义 2.生物网络的分类 3.生物网络的子概念     一、什么是生物网络1.生物网络的定义生物网络指的是适用于生物系统的网络。网络指的是具有连为一体的子单元（例如链接到整个食物网的物种单元）的系统[1]。简单的来理解，就是生物网络是一个有关生物的信息的载体，通过网络链接的方式表达各个节点之间的关系。如蛋白质互作网络，KEGG通路等都是常见的生物网络 2.生物网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生物网络">
+<meta property="og:url" content="http://example.com/2022/05/20/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="Lantary">
+<meta property="og:description" content="一、什么是生物网络 1.生物网络的定义 2.生物网络的分类 3.生物网络的子概念     一、什么是生物网络1.生物网络的定义生物网络指的是适用于生物系统的网络。网络指的是具有连为一体的子单元（例如链接到整个食物网的物种单元）的系统[1]。简单的来理解，就是生物网络是一个有关生物的信息的载体，通过网络链接的方式表达各个节点之间的关系。如蛋白质互作网络，KEGG通路等都是常见的生物网络 2.生物网">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://chart.googleapis.com/chart?cht=tx&chl=CC_{v} = \frac{n}{C_{k}^{2}} = \frac{2n}{k(k-1)}">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166695151-865f3ca3-91ac-441f-a624-a579b6aaa850.png">
+<meta property="og:image" content="http://chart.googleapis.com/chart?cht=tx&chl=CC_{A}  = \frac{2}{3(3-1)} = \frac{1}{3}">
+<meta property="og:image" content="http://chart.googleapis.com/chart?cht=tx&chl=CC_{v} = \frac{n}{P_{k_{out}}^{2}} = \frac{n}{k_{out}(k_{out}-1)}">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166705407-db0f21e5-357f-48b6-ba3d-9ebbef6ef265.png">
+<meta property="og:image" content="http://chart.googleapis.com/chart?cht=tx&chl=CC_{A}  = \frac{3}{3(3-1)} = \frac{1}{2}">
+<meta property="article:published_time" content="2022-05-20T15:45:39.019Z">
+<meta property="article:modified_time" content="2022-05-20T15:47:25.495Z">
+<meta property="article:author" content="lantary">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://chart.googleapis.com/chart?cht=tx&chl=CC_{v} = \frac{n}{C_{k}^{2}} = \frac{2n}{k(k-1)}">
+
+<link rel="canonical" href="http://example.com/2022/05/20/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>生物网络 | Lantary</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lantary</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/20/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.png">
+      <meta itemprop="name" content="lantary">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lantary">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          生物网络
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-20 23:45:39 / Modified: 23:47:25" itemprop="dateCreated datePublished" datetime="2022-05-20T23:45:39+08:00">2022-05-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">生物信息学</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">生物网络</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ul>
+<li><a href="#%E4%B8%80%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C">一、什么是生物网络</a><ul>
+<li><a href="#1%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AE%9A%E4%B9%89">1.生物网络的定义</a></li>
+<li><a href="#2%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E7%9A%84%E5%88%86%E7%B1%BB">2.生物网络的分类</a></li>
+<li><a href="#3%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AD%90%E6%A6%82%E5%BF%B5">3.生物网络的子概念</a></li>
+</ul>
+</li>
+</ul>
+<p><br></br></p>
+<h1 id="一、什么是生物网络"><a href="#一、什么是生物网络" class="headerlink" title="一、什么是生物网络"></a>一、什么是生物网络</h1><h2 id="1-生物网络的定义"><a href="#1-生物网络的定义" class="headerlink" title="1.生物网络的定义"></a>1.生物网络的定义</h2><p>生物网络指的是适用于生物系统的网络。网络指的是具有连为一体的子单元（例如链接到整个食物网的物种单元）的系统<sup><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C">[1]</a></sup>。简单的来理解，就是生物网络是一个有关生物的信息的载体，通过网络链接的方式表达各个节点之间的关系。如蛋白质互作网络，KEGG通路等都是常见的生物网络</p>
+<h2 id="2-生物网络的分类"><a href="#2-生物网络的分类" class="headerlink" title="2.生物网络的分类"></a>2.生物网络的分类</h2><p><strong>1.有向网络与无向网络</strong></p>
+<p><br></br></p>
+<p>根据网络中的边是否具有方向性或者说连接一条边的两个节点是否存在顺序，网络可以分为有向网络与无向网络，边存在方向性为有向网络(directed network)，否则为无向网络(undirected network)。<br>下图为KEGG的通路网络图，是一个典型的有向网络，连接边的方向代表了代谢的顺序。</p>
+<div align=center><img src=https://user-images.githubusercontent.com/102901955/166651208-0a88d139-b90a-46c3-829d-4a164d5d1602.png width=40% /></div>
+
+
+<p>下图为String 数据库中蛋白互作的关系图，是一个典型的无向网络，节点表示蛋白，而连接的线条表示是否互作，不含有方向信息。</p>
+<div align=center><img src=https://user-images.githubusercontent.com/102901955/166651669-638d6cb8-279b-40d5-8df4-82cdfa095985.png width=40% /></div>
+
+<p><br></br></p>
+<p><strong>2.加权网络与等权网络</strong></p>
+<p><br></br></p>
+<p>加权网络指网络中的每条边都被赋予相应的数值。所赋予的数值称为边的权重。权重可以用来描述节点间的距离，相关程度，稳定程度。String蛋白互作网络就是一个加权网络，他的边表示两个节点直接互作的得分。</p>
+<p>如果网络中各边之间没有区别，可以认为各边的权重相等，称为等权网络或无权网络</p>
+<p><br></br></p>
+<p><strong>3.二分网络</strong></p>
+<p><br></br></p>
+<p>如果网络中的节点可分为两个互不相交的集合，而所有的边都建立在来自不同集合的节点之间，则称这样的网络为二分网络。下图是一个二分网络的例子</p>
+<div align=center><img src=https://user-images.githubusercontent.com/102901955/166682187-d89e8481-abe4-4c47-a1e3-b915e31be598.png width=40% /></div>
+
+<p><br></br></p>
+<h2 id="3-生物网络的子概念"><a href="#3-生物网络的子概念" class="headerlink" title="3.生物网络的子概念"></a>3.生物网络的子概念</h2><p><br></br></p>
+<p>为了解释下面几个概念我们用一个简单的网络图作为例子</p>
+<div align=center> <img src = https://user-images.githubusercontent.com/102901955/166682829-2c72d3ae-51d9-43fa-9fce-97012de5d9b2.png /> </div>
+
+<p><br></br></p>
+<p><strong>1.节点的度(degree)</strong></p>
+<p><br></br></p>
+<p>又称为连通度，关联度。节点度是指和该节点相关联的边的条数。</p>
+<p>特别地，对于有向图，</p>
+<p>节点的入度 是指进入该节点的边的条数；</p>
+<p>节点的出度是指从该节点出发的边的条数。</p>
+<p>如上图 <code>A</code> 的度数为2，<code>B</code>，<code>C</code> 的度数为 1</p>
+<p><br></br></p>
+<p><strong>2.最短路径</strong>  </p>
+<p><br></br></p>
+<p>指连接两个节点之间经过最少的边的路径。</p>
+<p>如上图中 <code>A</code> 节点到 <code>B</code> 的最短路径为 <code>A-B</code> ， 而 <code>B</code> 节点到 <code>C</code> 节点的最短路径为 <code>B-C</code> 。  </p>
+<p><br></br></p>
+<p><strong>3.节点的介数</strong>   </p>
+<p><br></br></p>
+<p>节点的介数是用于描述一个节点在网络中的重要程度的参数。某一节点在网络中越重要，则其介数越大。</p>
+<p>其计算公式为</p>
+<img src =https://user-images.githubusercontent.com/102901955/166685241-d931e15b-54f3-417a-89cf-05e858f26885.png width=20% />
+
+<p>其中 B<sub>i</sub> 即为节点 <code>i</code> 的介数，如 B<sub>A</sub> 为上图中 A 节点的介数。</p>
+<p><strong>n<sub>k,j</sub></strong> 表示为 <code>k</code> ，<code>j</code> 节点之间的最短路径的数量。 <strong>n<sub>k,j(i)</sub></strong> 表示为 <code>k</code> ， <code>j</code> 节点最短路径中含有 <code>i</code> 节点的数量。</p>
+<p>如上图中 显然可以看出 <code>A</code> 节点是整个网络中最重要的。其介数为 </p>
+<img src =https://user-images.githubusercontent.com/102901955/166689035-59e8c4f1-99b8-45e1-ba3f-7ca92336658d.png width=50% />
+
+<p>同理可计算出 <code>B</code> ， <code>C</code> 节点的节度均为 2 。 表明 <code>A</code> 节点的重要程度大于 <code>B</code> ， <code>C</code> 节点。</p>
+<p><br></br></p>
+<p><strong>4.聚类系数(clustering coefficient, CC)</strong></p>
+<p><br></br></p>
+<p>聚类系数用于衡量节点的密集程度。</p>
+<p>在无向网络中，节点 <code>v</code> 的聚类系数 CC<sub>v</sub> 的表达公式为  <img src="http://chart.googleapis.com/chart?cht=tx&chl=CC_{v} = \frac{n}{C_{k}^{2}} = \frac{2n}{k(k-1)}" style="border:none;"></p>
+<p>其中 n 表示 节点v 的所有 k 个邻居节点之间边的数量。n 的最大值可以由 C<sub>k</sub><sup>2</sup> = k(k-1)/2 计算出。其含义为在所有 k 个邻居节点中， 选出2个相连的节点的所有可能数量。<br>故可以得到 CC<sub>v</sub> 的取值落在 [0, 1] 之间。</p>
+<p>以下图为例。</p>
+<p><img src="https://user-images.githubusercontent.com/102901955/166695151-865f3ca3-91ac-441f-a624-a579b6aaa850.png" alt="image"></p>
+<p>节点 A 的聚类系数  <img src="http://chart.googleapis.com/chart?cht=tx&chl=CC_{A}  = \frac{2}{3(3-1)} = \frac{1}{3}" ></p>
+<p>在有向网络中，节点 <code>v</code> 的聚类系数 CC<sub>v</sub> 的表达公式为 <img src="http://chart.googleapis.com/chart?cht=tx&chl=CC_{v} = \frac{n}{P_{k_{out}}^{2}} = \frac{n}{k_{out}(k_{out}-1)}" style="border:none;"></p>
+<p>其中 k<sub>out</sub> 为 v 节点的出度，n 表示 v 所有指向的节点彼此之间存在的边数。因为有方向差别，不同方向的节点算两条边，故用的是排列而不是组合。</p>
+<p>以下图为例</p>
+<p><img src="https://user-images.githubusercontent.com/102901955/166705407-db0f21e5-357f-48b6-ba3d-9ebbef6ef265.png" alt="image"></p>
+<p>图中 计算 A 节点的聚类系数。 节点 A 连接了三个节点 <code>&#123;B, C, F&#125;</code> ， 所以 n 为 3 ，其中<code>&#123;B, C, F&#125;</code> 相连接的边有 <code>&#123;[B → C], [C → B], [C → F]&#125;</code> 共 3 条 故 k<sub>out</sub> 为 3</p>
+<p>A 的聚类系数 <img src="http://chart.googleapis.com/chart?cht=tx&chl=CC_{A}  = \frac{3}{3(3-1)} = \frac{1}{2}" ></p>
+<p><br></br></p>
+<p><strong>5.度分布</strong></p>
+<p><br></br></p>
+<p>度分布指的是整个网络中各个点的度数量的概率分布。</p>
+<p>例如 P{k = k<sub>i</sub>} 表示的是在某一网络中，度为 k<sub>i</sub> 的节点的出现概率。 </p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/20/%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/GSEA,%20GSVA%E5%88%86%E6%9E%90/" rel="prev" title="GSEA,GSVA分析">
+      <i class="fa fa-chevron-left"></i> GSEA,GSVA分析
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/20/ROC%E6%9B%B2%E7%BA%BF/ROC%E6%9B%B2%E7%BA%BF/" rel="next" title="ROC曲线">
+      ROC曲线 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C"><span class="nav-number">1.</span> <span class="nav-text">一、什么是生物网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">1.生物网络的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">2.生物网络的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AD%90%E6%A6%82%E5%BF%B5"><span class="nav-number">1.3.</span> <span class="nav-text">3.生物网络的子概念</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lantary"
+      src="/images/%E5%A4%B4%E5%83%8F.png">
+  <p class="site-author-name" itemprop="name">lantary</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Lantary" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Lantary" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+<!-- CloudCalendar -->
+<div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+	<div class="widget" id="CloudCalendar"></div>
+</div><!-- CloudCalendar -->
+<div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+<div class="widget" id="CloudCalendar"></div>
+</div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lantary</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<!-- calendar widget -->
+
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/calendar.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/languages.min.js"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('zh-CN',
+            $.extend(
+                '', {
+                    single:true,
+                    root:'/calendar/'
+                }
+            )
+        );
+    });
+    </script>
+
+
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?lantary";
+            var git_color =['#fafbfc', '#ebedf0', '#f6f8fa', '#e1e4e8', '#d1d5da', '#959da5', '#6a737d', '#586069', '#444d56', '#2f363d', '#24292e'];
+            var git_user ="lantary";
+            var parent_div_git = document.getElementsByClassName('main-inner')[0];
+            var git_div_html = '<div class="post-block animated fadeIn" style="width:100%;height:auto;padding:40px 10px 10px 10px;"><div id="github_loading" style="height:100%;display: flex;align-items: center;justify-content: center;"><svg style="height:50px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div><footer class="post-footer"><div class="post-eof"></div></footer>';
+            if(parent_div_git && location.pathname =='/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementsByClassName('main-inner')[0]){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:280px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style></style><!-- hexo injector body_end end --></body>
+</html>
+<!-- calendar widget -->
+
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/calendar.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/languages.min.js"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('zh-CN',
+            $.extend(
+                '', {
+                    single:true,
+                    root:'/calendar/'
+                }
+            )
+        );
+    });
+    </script>
+
