@@ -4,8 +4,14 @@ categories:
 	- 日常使用中的问题
 ---
 
-# 问题描述
+# 问题描述及解决办法
 ubuntu系统中下载了腾讯会议官方版本的deb包，安装后无法打开。弹窗警告 “检测到窗口系统采用wayland协议 腾讯会议暂不兼容 程序即将退出”
+
+'''
+sudo vim /etc/gdm3/custom.conf
+把 #WaylandEnable=false 的注释井号去掉
+sudo service gdm3 restart
+'''
 
 ![test][test]
 
