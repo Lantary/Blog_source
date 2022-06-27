@@ -20,21 +20,26 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1.原始数据为从DAVID进行富集分析结束后download下的txt文件。 2.下载txt文件后用 本文件夹 中的R代码改写相应工作目录即可画出通路富集的气泡图。 3.结果如图所示  4.横轴Fold Enrichmment表示实际富集到的概率比随机富集到的概率多了多少倍     计算公式：   Count &#x2F; List.Total &#x3D; 实际富集到的概率i   Pop.Hits &#x2F; Pop.To">
+  <meta name="description" content="一、什么是生物网络 1.生物网络的定义 2.生物网络的分类 3.生物网络的子概念     一、什么是生物网络1.生物网络的定义生物网络指的是适用于生物系统的网络。网络指的是具有连为一体的子单元（例如链接到整个食物网的物种单元）的系统[1]。简单的来理解，就是生物网络是一个有关生物的信息的载体，通过网络链接的方式表达各个节点之间的关系。如蛋白质互作网络，KEGG通路等都是常见的生物网络 2.生物网">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DAVID富集分析(二)">
-<meta property="og:url" content="http://example.com/2022/05/20/%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/index.html">
+<meta property="og:title" content="生物网络">
+<meta property="og:url" content="http://example.com/1970/01/01/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="Lantary">
-<meta property="og:description" content="1.原始数据为从DAVID进行富集分析结束后download下的txt文件。 2.下载txt文件后用 本文件夹 中的R代码改写相应工作目录即可画出通路富集的气泡图。 3.结果如图所示  4.横轴Fold Enrichmment表示实际富集到的概率比随机富集到的概率多了多少倍     计算公式：   Count &#x2F; List.Total &#x3D; 实际富集到的概率i   Pop.Hits &#x2F; Pop.To">
+<meta property="og:description" content="一、什么是生物网络 1.生物网络的定义 2.生物网络的分类 3.生物网络的子概念     一、什么是生物网络1.生物网络的定义生物网络指的是适用于生物系统的网络。网络指的是具有连为一体的子单元（例如链接到整个食物网的物种单元）的系统[1]。简单的来理解，就是生物网络是一个有关生物的信息的载体，通过网络链接的方式表达各个节点之间的关系。如蛋白质互作网络，KEGG通路等都是常见的生物网络 2.生物网">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166146200-7a47dcef-6eb1-4ecc-b289-d7bd7db9c9be.png">
-<meta property="article:published_time" content="2022-05-20T14:40:58.451Z">
-<meta property="article:modified_time" content="2022-05-20T15:29:20.398Z">
+<meta property="og:image" content="http://chart.googleapis.com/chart?cht=tx&chl=CC_{v} = \frac{n}{C_{k}^{2}} = \frac{2n}{k(k-1)}">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166695151-865f3ca3-91ac-441f-a624-a579b6aaa850.png">
+<meta property="og:image" content="http://chart.googleapis.com/chart?cht=tx&chl=CC_{A}  = \frac{2}{3(3-1)} = \frac{1}{3}">
+<meta property="og:image" content="http://chart.googleapis.com/chart?cht=tx&chl=CC_{v} = \frac{n}{P_{k_{out}}^{2}} = \frac{n}{k_{out}(k_{out}-1)}">
+<meta property="og:image" content="https://user-images.githubusercontent.com/102901955/166705407-db0f21e5-357f-48b6-ba3d-9ebbef6ef265.png">
+<meta property="og:image" content="http://chart.googleapis.com/chart?cht=tx&chl=CC_{A}  = \frac{3}{3(3-1)} = \frac{1}{2}">
+<meta property="article:published_time" content="1970-01-01T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-20T15:47:25.495Z">
 <meta property="article:author" content="lantary">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/102901955/166146200-7a47dcef-6eb1-4ecc-b289-d7bd7db9c9be.png">
+<meta name="twitter:image" content="http://chart.googleapis.com/chart?cht=tx&chl=CC_{v} = \frac{n}{C_{k}^{2}} = \frac{2n}{k(k-1)}">
 
-<link rel="canonical" href="http://example.com/2022/05/20/%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/">
+<link rel="canonical" href="http://example.com/1970/01/01/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/">
 
 
 <script id="page-configurations">
@@ -47,7 +52,7 @@
   };
 </script>
 
-  <title>DAVID富集分析(二) | Lantary</title>
+  <title>生物网络 | Lantary</title>
   
 
 
@@ -185,7 +190,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/20/%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/1970/01/01/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.png">
@@ -198,7 +203,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          DAVID富集分析(二)
+          生物网络
         </h1>
 
         <div class="post-meta">
@@ -207,10 +212,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-05-20 22:40:58 / Modified: 23:29:20" itemprop="dateCreated datePublished" datetime="2022-05-20T22:40:58+08:00">2022-05-20</time>
+              <time title="Created: 1970-01-01 08:00:00" itemprop="dateCreated datePublished" datetime="1970-01-01T08:00:00+08:00">1970-01-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-20 23:47:25" itemprop="dateModified" datetime="2022-05-20T23:47:25+08:00">2022-05-20</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -221,7 +232,7 @@
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">富集分析</span></a>
+                  <a href="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">生物网络</span></a>
                 </span>
             </span>
 
@@ -236,15 +247,87 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>1.原始数据为从DAVID进行富集分析结束后download下的txt文件。</p>
-<p>2.下载txt文件后用 本文件夹 中的R代码改写相应工作目录即可画出通路富集的气泡图。</p>
-<p>3.结果如图所示</p>
-<p><img src="https://user-images.githubusercontent.com/102901955/166146200-7a47dcef-6eb1-4ecc-b289-d7bd7db9c9be.png" alt="image"></p>
-<p>4.横轴Fold Enrichmment表示实际富集到的概率比随机富集到的概率多了多少倍  </p>
-<p>  计算公式：</p>
-<p>  Count / List.Total = 实际富集到的概率i</p>
-<p>  Pop.Hits / Pop.Total = 随机富集到的概率ii</p>
-<p>  i / ii = Fold Enrichment</p>
+        <ul>
+<li><a href="#%E4%B8%80%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C">一、什么是生物网络</a><ul>
+<li><a href="#1%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AE%9A%E4%B9%89">1.生物网络的定义</a></li>
+<li><a href="#2%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E7%9A%84%E5%88%86%E7%B1%BB">2.生物网络的分类</a></li>
+<li><a href="#3%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AD%90%E6%A6%82%E5%BF%B5">3.生物网络的子概念</a></li>
+</ul>
+</li>
+</ul>
+<p><br></br></p>
+<h1 id="一、什么是生物网络"><a href="#一、什么是生物网络" class="headerlink" title="一、什么是生物网络"></a>一、什么是生物网络</h1><h2 id="1-生物网络的定义"><a href="#1-生物网络的定义" class="headerlink" title="1.生物网络的定义"></a>1.生物网络的定义</h2><p>生物网络指的是适用于生物系统的网络。网络指的是具有连为一体的子单元（例如链接到整个食物网的物种单元）的系统<sup><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C">[1]</a></sup>。简单的来理解，就是生物网络是一个有关生物的信息的载体，通过网络链接的方式表达各个节点之间的关系。如蛋白质互作网络，KEGG通路等都是常见的生物网络</p>
+<h2 id="2-生物网络的分类"><a href="#2-生物网络的分类" class="headerlink" title="2.生物网络的分类"></a>2.生物网络的分类</h2><p><strong>1.有向网络与无向网络</strong></p>
+<p><br></br></p>
+<p>根据网络中的边是否具有方向性或者说连接一条边的两个节点是否存在顺序，网络可以分为有向网络与无向网络，边存在方向性为有向网络(directed network)，否则为无向网络(undirected network)。<br>下图为KEGG的通路网络图，是一个典型的有向网络，连接边的方向代表了代谢的顺序。</p>
+<div align=center><img src=https://user-images.githubusercontent.com/102901955/166651208-0a88d139-b90a-46c3-829d-4a164d5d1602.png width=40% /></div>
+
+
+<p>下图为String 数据库中蛋白互作的关系图，是一个典型的无向网络，节点表示蛋白，而连接的线条表示是否互作，不含有方向信息。</p>
+<div align=center><img src=https://user-images.githubusercontent.com/102901955/166651669-638d6cb8-279b-40d5-8df4-82cdfa095985.png width=40% /></div>
+
+<p><br></br></p>
+<p><strong>2.加权网络与等权网络</strong></p>
+<p><br></br></p>
+<p>加权网络指网络中的每条边都被赋予相应的数值。所赋予的数值称为边的权重。权重可以用来描述节点间的距离，相关程度，稳定程度。String蛋白互作网络就是一个加权网络，他的边表示两个节点直接互作的得分。</p>
+<p>如果网络中各边之间没有区别，可以认为各边的权重相等，称为等权网络或无权网络</p>
+<p><br></br></p>
+<p><strong>3.二分网络</strong></p>
+<p><br></br></p>
+<p>如果网络中的节点可分为两个互不相交的集合，而所有的边都建立在来自不同集合的节点之间，则称这样的网络为二分网络。下图是一个二分网络的例子</p>
+<div align=center><img src=https://user-images.githubusercontent.com/102901955/166682187-d89e8481-abe4-4c47-a1e3-b915e31be598.png width=40% /></div>
+
+<p><br></br></p>
+<h2 id="3-生物网络的子概念"><a href="#3-生物网络的子概念" class="headerlink" title="3.生物网络的子概念"></a>3.生物网络的子概念</h2><p><br></br></p>
+<p>为了解释下面几个概念我们用一个简单的网络图作为例子</p>
+<div align=center> <img src = https://user-images.githubusercontent.com/102901955/166682829-2c72d3ae-51d9-43fa-9fce-97012de5d9b2.png /> </div>
+
+<p><br></br></p>
+<p><strong>1.节点的度(degree)</strong></p>
+<p><br></br></p>
+<p>又称为连通度，关联度。节点度是指和该节点相关联的边的条数。</p>
+<p>特别地，对于有向图，</p>
+<p>节点的入度 是指进入该节点的边的条数；</p>
+<p>节点的出度是指从该节点出发的边的条数。</p>
+<p>如上图 <code>A</code> 的度数为2，<code>B</code>，<code>C</code> 的度数为 1</p>
+<p><br></br></p>
+<p><strong>2.最短路径</strong>  </p>
+<p><br></br></p>
+<p>指连接两个节点之间经过最少的边的路径。</p>
+<p>如上图中 <code>A</code> 节点到 <code>B</code> 的最短路径为 <code>A-B</code> ， 而 <code>B</code> 节点到 <code>C</code> 节点的最短路径为 <code>B-C</code> 。  </p>
+<p><br></br></p>
+<p><strong>3.节点的介数</strong>   </p>
+<p><br></br></p>
+<p>节点的介数是用于描述一个节点在网络中的重要程度的参数。某一节点在网络中越重要，则其介数越大。</p>
+<p>其计算公式为</p>
+<img src =https://user-images.githubusercontent.com/102901955/166685241-d931e15b-54f3-417a-89cf-05e858f26885.png width=20% />
+
+<p>其中 B<sub>i</sub> 即为节点 <code>i</code> 的介数，如 B<sub>A</sub> 为上图中 A 节点的介数。</p>
+<p><strong>n<sub>k,j</sub></strong> 表示为 <code>k</code> ，<code>j</code> 节点之间的最短路径的数量。 <strong>n<sub>k,j(i)</sub></strong> 表示为 <code>k</code> ， <code>j</code> 节点最短路径中含有 <code>i</code> 节点的数量。</p>
+<p>如上图中 显然可以看出 <code>A</code> 节点是整个网络中最重要的。其介数为 </p>
+<img src =https://user-images.githubusercontent.com/102901955/166689035-59e8c4f1-99b8-45e1-ba3f-7ca92336658d.png width=50% />
+
+<p>同理可计算出 <code>B</code> ， <code>C</code> 节点的节度均为 2 。 表明 <code>A</code> 节点的重要程度大于 <code>B</code> ， <code>C</code> 节点。</p>
+<p><br></br></p>
+<p><strong>4.聚类系数(clustering coefficient, CC)</strong></p>
+<p><br></br></p>
+<p>聚类系数用于衡量节点的密集程度。</p>
+<p>在无向网络中，节点 <code>v</code> 的聚类系数 CC<sub>v</sub> 的表达公式为  <img src="http://chart.googleapis.com/chart?cht=tx&chl=CC_{v} = \frac{n}{C_{k}^{2}} = \frac{2n}{k(k-1)}" style="border:none;"></p>
+<p>其中 n 表示 节点v 的所有 k 个邻居节点之间边的数量。n 的最大值可以由 C<sub>k</sub><sup>2</sup> = k(k-1)/2 计算出。其含义为在所有 k 个邻居节点中， 选出2个相连的节点的所有可能数量。<br>故可以得到 CC<sub>v</sub> 的取值落在 [0, 1] 之间。</p>
+<p>以下图为例。</p>
+<p><img src="https://user-images.githubusercontent.com/102901955/166695151-865f3ca3-91ac-441f-a624-a579b6aaa850.png" alt="image"></p>
+<p>节点 A 的聚类系数  <img src="http://chart.googleapis.com/chart?cht=tx&chl=CC_{A}  = \frac{2}{3(3-1)} = \frac{1}{3}" ></p>
+<p>在有向网络中，节点 <code>v</code> 的聚类系数 CC<sub>v</sub> 的表达公式为 <img src="http://chart.googleapis.com/chart?cht=tx&chl=CC_{v} = \frac{n}{P_{k_{out}}^{2}} = \frac{n}{k_{out}(k_{out}-1)}" style="border:none;"></p>
+<p>其中 k<sub>out</sub> 为 v 节点的出度，n 表示 v 所有指向的节点彼此之间存在的边数。因为有方向差别，不同方向的节点算两条边，故用的是排列而不是组合。</p>
+<p>以下图为例</p>
+<p><img src="https://user-images.githubusercontent.com/102901955/166705407-db0f21e5-357f-48b6-ba3d-9ebbef6ef265.png" alt="image"></p>
+<p>图中 计算 A 节点的聚类系数。 节点 A 连接了三个节点 <code>&#123;B, C, F&#125;</code> ， 所以 n 为 3 ，其中<code>&#123;B, C, F&#125;</code> 相连接的边有 <code>&#123;[B → C], [C → B], [C → F]&#125;</code> 共 3 条 故 k<sub>out</sub> 为 3</p>
+<p>A 的聚类系数 <img src="http://chart.googleapis.com/chart?cht=tx&chl=CC_{A}  = \frac{3}{3(3-1)} = \frac{1}{2}" ></p>
+<p><br></br></p>
+<p><strong>5.度分布</strong></p>
+<p><br></br></p>
+<p>度分布指的是整个网络中各个点的度数量的概率分布。</p>
+<p>例如 P{k = k<sub>i</sub>} 表示的是在某一网络中，度为 k<sub>i</sub> 的节点的出现概率。 </p>
 
     </div>
 
@@ -259,13 +342,10 @@
 
         
     <div class="post-nav">
+      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2022/05/20/%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/001_DAVID%E5%9C%A8%E7%BA%BF%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/" rel="prev" title="DAVID富集分析(一)">
-      <i class="fa fa-chevron-left"></i> DAVID富集分析(一)
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/05/20/%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/GSEA,%20GSVA%E5%88%86%E6%9E%90/" rel="next" title="GSEA,GSVA分析">
-      GSEA,GSVA分析 <i class="fa fa-chevron-right"></i>
+    <a href="/1970/01/01/%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E9%97%AE%E9%A2%98/%E6%A3%80%E6%B5%8B%E5%88%B0%E7%AA%97%E5%8F%A3%E7%B3%BB%E7%BB%9F%E9%87%87%E7%94%A8wayland%E5%8D%8F%E8%AE%AE%20%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE%E6%9A%82%E4%B8%8D%E5%85%BC%E5%AE%B9%20%E7%A8%8B%E5%BA%8F%E5%8D%B3%E5%B0%86%E9%80%80%E5%87%BA/" rel="next" title="检测到窗口系统采用wayland协议 腾讯会议暂不兼容 程序即将退出">
+      检测到窗口系统采用wayland协议 腾讯会议暂不兼容 程序即将退出 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -325,6 +405,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C"><span class="nav-number">1.</span> <span class="nav-text">一、什么是生物网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">1.生物网络的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">2.生物网络的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AD%90%E6%A6%82%E5%BF%B5"><span class="nav-number">1.3.</span> <span class="nav-text">3.生物网络的子概念</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -340,14 +421,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
