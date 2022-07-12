@@ -103,7 +103,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: next_v8.5.0
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
