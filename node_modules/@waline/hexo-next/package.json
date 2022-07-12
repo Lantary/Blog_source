@@ -1,0 +1,24 @@
+{
+  "name": "@waline/hexo-next",
+  "version": "3.0.1",
+  "description": "Waline comment system for NexT.",
+  "keywords": [
+    "Hexo",
+    "NexT",
+    "waline"
+  ],
+  "homepage": "https://github.com/walinejs/waline/packages/hexo-next/#readme",
+  "bugs": {
+    "url": "https://github.com/walinejs/waline/issues"
+  },
+  "repository": {
+    "url": "https://github.com/walinejs/waline",
+    "directory": "packages/hexo-next"
+  },
+  "license": "MIT",
+  "author": "lizheming <i@imnerd.org>",
+  "main": "index.js",
+  "dependencies": {
+    "@next-theme/utils": "^1.3.0"
+  }
+}
