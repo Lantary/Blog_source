@@ -16,9 +16,8 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"lantary.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lantary.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="一、什么是ROC曲线 1.相关概念 2.ROC曲线 3.AUC面积   二、ROC曲线如何绘制 1.算法介绍 2.用R进行ROC曲线的绘制 1.简单绘制ROC曲线 2.将两个ROC曲线绘制在一张图中，并添加标签      一、什么是ROC曲线ROC曲线实际上就是一种用于评价所建立的模型优劣性的二维图像  1.相关概念1.真阳性(TP)：实际为正类，模型预测为正类 2.假阳性(FP)：实际为负类，">
 <meta property="og:type" content="article">
@@ -57,7 +56,7 @@
   </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+<body itemscope itemtype="http://schema.org/WebPage">
   <div class="headband"></div>
 
   <main class="main">
@@ -153,6 +152,8 @@
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lantary"
+      src="/images/%E5%A4%B4%E5%83%8F.png">
   <p class="site-author-name" itemprop="name">lantary</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -171,6 +172,14 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Lantary" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Lantary" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1468954940@qq.com" title="E-Mail → 1468954940@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
 
 <!-- CloudCalendar -->
@@ -211,7 +220,7 @@
     <link itemprop="mainEntityOfPage" href="https://lantary.github.io/2022/05/20/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/ROC%E6%9B%B2%E7%BA%BF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.png">
       <meta itemprop="name" content="lantary">
     </span>
 
@@ -374,13 +383,13 @@ lty                 -改变标签线的类型, 可以设置通过与plot图像�
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/05/20/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/%E5%B7%AE%E5%BC%82%E5%88%86%E6%9E%90/" rel="prev" title="差异分析">
-                  <i class="fa fa-chevron-left"></i> 差异分析
+                <a href="/2022/05/20/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/001_DAVID%E5%9C%A8%E7%BA%BF%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/" rel="prev" title="DAVID富集分析(一)">
+                  <i class="fa fa-chevron-left"></i> DAVID富集分析(一)
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/05/20/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/001_DAVID%E5%9C%A8%E7%BA%BF%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/" rel="next" title="DAVID富集分析(一)">
-                  DAVID富集分析(一) <i class="fa fa-chevron-right"></i>
+                <a href="/2022/06/27/%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E9%97%AE%E9%A2%98/%E6%A3%80%E6%B5%8B%E5%88%B0%E7%AA%97%E5%8F%A3%E7%B3%BB%E7%BB%9F%E9%87%87%E7%94%A8wayland%E5%8D%8F%E8%AE%AE%20%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE%E6%9A%82%E4%B8%8D%E5%85%BC%E5%AE%B9%20%E7%A8%8B%E5%BA%8F%E5%8D%B3%E5%B0%86%E9%80%80%E5%87%BA/" rel="next" title="检测到窗口系统采用wayland协议 腾讯会议暂不兼容 程序即将退出">
+                  检测到窗口系统采用wayland协议 腾讯会议暂不兼容 程序即将退出 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -409,7 +418,7 @@ lty                 -改变标签线的类型, 可以设置通过与plot图像�
   </span>
   <span class="author" itemprop="copyrightHolder">lantary</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
     </div>
@@ -417,7 +426,7 @@ lty                 -改变标签线的类型, 可以设置通过与plot图像�
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
 
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
