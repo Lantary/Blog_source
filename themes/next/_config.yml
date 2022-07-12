@@ -480,8 +480,7 @@ exturl: false
 
 # Google Webmaster tools verification.
 # See: https://www.google.com/webmasters
-google_site_verification:
-
+google_site_verification: 1iUMzWMUJcyzzrRNa_dPYqsO6vSlB1bY1xvz6rEZy2k
 # Bing Webmaster tools verification.
 # See: https://www.bing.com/webmaster
 bing_site_verification:
@@ -1012,3 +1011,11 @@ vendors:
 css: css
 js: js
 images: images
+
+
+
+
+
+
+
+

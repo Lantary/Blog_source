@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /tags/
+Allow: /categories/
+Allow: /about/
+Allow: /guestbook/
+Allow: /others/
+
+
+Disallow: /js/
+Disallow: /css/
+Disallow: /lib/
+
+Sitemap: https://lantary.github.io/sitemap.xml
+Sitemap: https://lantary.github.io/baidusitemap.xml

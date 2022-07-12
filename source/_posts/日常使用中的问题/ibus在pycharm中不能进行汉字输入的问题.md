@@ -2,6 +2,7 @@
 title: ibus在pycharm中不能进行汉字输入的问题
 categories:
 	- 日常使用中的问题
+date: 2022-06-27
 ---
 ## 问题描述
 
