@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>博客插件</title>
-    <url>/2022/04/01/%E5%8D%9A%E5%AE%A2%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="日历插件"><a href="#日历插件" class="headerlink" title="日历插件"></a>日历插件</h1><p><del>来源于<a href="https://github.com/theme-next/theme-next-calendar">theme-next-calendar</a></del></p>
-<p>来源于<a href="https://zfe.space/">小冰大神</a> 做的插件 <a href="https://zfe.space/post/hexo-githubcalendar.html">文章在此处</a> , <a href="https://github.com/Zfour/hexo-github-calendar">github</a></p>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-  </entry>
-  <entry>
     <title>hexo框架下的博客提交至google搜索</title>
     <url>/2022/07/10/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/blog%E8%83%BD%E8%A2%AB%E6%90%9C%E7%B4%A2%E5%88%B0/</url>
-    <content><![CDATA[<h2 id="博客优化内容"><a href="#博客优化内容" class="headerlink" title="博客优化内容"></a>博客优化内容</h2><p>对于刚建立的博客来说，谷歌往往不能或者不会收录你的博客，为了使自己的博客可以被谷歌所检索到。我们需要主动向谷歌提供网址信息。</p>
-<h2 id="优化方案"><a href="#优化方案" class="headerlink" title="优化方案"></a>优化方案</h2><p>谷歌提供了如何向谷歌提交搜索的方法，同样bing，搜狗，百度等搜索引擎也有相同的提交方案。<br>如果你想你的博客被全网搜索到，那么你需要在主流的搜索引擎上分别提交你的网址。要注意的是百度的提交原理跟其他搜索引擎有所不同。这篇博客只以谷歌搜索为例子。以下操作均在 <a href="https://search.google.com/search-console/about">[Google Search Console]</a> 中完成。</p>
-<h3 id="1-验证网站所属"><a href="#1-验证网站所属" class="headerlink" title="1.验证网站所属"></a>1.验证网站所属</h3><p>进入 <a href="https://search.google.com/search-console/about">[Google Search Console]</a> 后会显示</p>
+    <content><![CDATA[<h3 id="博客优化内容"><a href="#博客优化内容" class="headerlink" title="博客优化内容"></a>博客优化内容</h3><p>对于刚建立的博客来说，谷歌往往不能或者不会收录你的博客，为了使自己的博客可以被谷歌所检索到。我们需要主动向谷歌提供网址信息。</p>
+<h3 id="优化方案"><a href="#优化方案" class="headerlink" title="优化方案"></a>优化方案</h3><p>谷歌提供了如何向谷歌提交搜索的方法，同样bing，搜狗，百度等搜索引擎也有相同的提交方案。<br>如果你想你的博客被全网搜索到，那么你需要在主流的搜索引擎上分别提交你的网址。要注意的是百度的提交原理跟其他搜索引擎有所不同。这篇博客只以谷歌搜索为例子。以下操作均在 <a href="https://search.google.com/search-console/about">[Google Search Console]</a> 中完成。</p>
+<h4 id="1-验证网站所属"><a href="#1-验证网站所属" class="headerlink" title="1.验证网站所属"></a>1.验证网站所属</h4><p>进入 <a href="https://search.google.com/search-console/about">[Google Search Console]</a> 后会显示</p>
 <p><img src="https://raw.githubusercontent.com/Lantary/Private_warehouses/main/hexo%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%8F%90%E4%BA%A4%E8%87%B3google%E6%90%9C%E7%B4%A2/p1.png" alt="piture_1"></p>
 <p>输入你博客的地址后点击继续。</p>
 <p><img src="https://github.com/Lantary/Private_warehouses/blob/main/hexo%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%8F%90%E4%BA%A4%E8%87%B3google%E6%90%9C%E7%B4%A2/p2.png?raw=true" alt="piture_2"></p>
@@ -24,18 +14,18 @@
 <p><img src="https://raw.githubusercontent.com/Lantary/Private_warehouses/main/hexo%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%8F%90%E4%BA%A4%E8%87%B3google%E6%90%9C%E7%B4%A2/p3.png" alt="piture_3"></p>
 <p>最后通过验证如图所示。</p>
 <p><img src="https://raw.githubusercontent.com/Lantary/Private_warehouses/main/hexo%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%8F%90%E4%BA%A4%E8%87%B3google%E6%90%9C%E7%B4%A2/p4.png" alt="piture_4"></p>
-<h3 id="2-添加sitemap文件到博客"><a href="#2-添加sitemap文件到博客" class="headerlink" title="2.添加sitemap文件到博客"></a>2.添加sitemap文件到博客</h3><p>向博客中添加站点地图的方式有很多。这里推荐一种用插件实现的方案。 首先要在你的博客根目录下下载插件。</p>
+<h4 id="2-添加sitemap文件到博客"><a href="#2-添加sitemap文件到博客" class="headerlink" title="2.添加sitemap文件到博客"></a>2.添加sitemap文件到博客</h4><p>向博客中添加站点地图的方式有很多。这里推荐一种用插件实现的方案。 首先要在你的博客根目录下下载插件。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
 <p>插件安装完成后，在public中文件夹中会生成一个 <code>sitemap.xml</code>，如果没有请重新编译一下 <code>hexo g</code> 再进行检查。 同时修改博客根目录下的站点配置文件 <code>_config.yml</code> 中的 url 属性，将你的主页网站输入到url中。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># URL</span><br><span class="line">## Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span><br><span class="line">url: https://lantary.github.io/</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br><span class="line">pretty_urls:</span><br><span class="line">  trailing_index: true # Set to false to remove trailing &#x27;index.html&#x27; from permalinks</span><br><span class="line">  trailing_html: true # Set to false to remove trailing &#x27;.html&#x27; from permalinks</span><br></pre></td></tr></table></figure>
 <p>重新编译部署 <code>hexo g -d</code>。在谷歌站点地图中输入sitemap.xml后提交即可。</p>
 <p><img src="https://github.com/Lantary/Private_warehouses/blob/main/hexo%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%8F%90%E4%BA%A4%E8%87%B3google%E6%90%9C%E7%B4%A2/p5.png?raw=true" alt="piture_5"></p>
-<h2 id="3-其他网站索引添加"><a href="#3-其他网站索引添加" class="headerlink" title="3.其他网站索引添加"></a>3.其他网站索引添加</h2><p>其他网站添加索引的方式与谷歌搜索类似，如果是bing则可以直接使用<a href="https://search.google.com/search-console/about">[Google Search Console]</a>的数据</p>
-<h2 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">博客框架		hexo-cli_4.3.0</span><br><span class="line">主题		next_7.8.0</span><br><span class="line">网站挂载于	github</span><br></pre></td></tr></table></figure>
+<h4 id="3-其他网站索引添加"><a href="#3-其他网站索引添加" class="headerlink" title="3.其他网站索引添加"></a>3.其他网站索引添加</h4><p>其他网站添加索引的方式与谷歌搜索类似，如果是bing则可以直接使用<a href="https://search.google.com/search-console/about">[Google Search Console]</a>的数据</p>
+<h3 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">博客框架		hexo-cli_4.3.0</span><br><span class="line">主题		next_7.8.0</span><br><span class="line">网站挂载于	github</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://javahikers.github.io/2019/06/16/personal-blog-being-included-in-google/">[1] 解决验证问题</a></p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a href="https://javahikers.github.io/2019/06/16/personal-blog-being-included-in-google/">[1] 解决验证问题</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/100922816">[2] 提交sitemap</a></p>
 ]]></content>
       <categories>
@@ -432,6 +422,55 @@ lty                 -改变标签线的类型, 可以设置通过与plot图像�
       <categories>
         <category>生物信息学</category>
         <category>生物网络</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>blog增加评论系统</title>
+    <url>/2022/07/14/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/blog%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h3 id="博客优化内容"><a href="#博客优化内容" class="headerlink" title="博客优化内容"></a>博客优化内容</h3><ul>
+<li>为博客添加评论系统</li>
+</ul>
+<h3 id="优化方案"><a href="#优化方案" class="headerlink" title="优化方案"></a>优化方案</h3><p>博主<a href="https://qianfanguojin.top/">千帆过烬</a>，已经介绍的十分详细，这里具体方法不做详细论述。</p>
+<h3 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h3><table>
+<thead>
+<tr>
+<th align="center">内容</th>
+<th align="center">版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">博客框架</td>
+<td align="center">hexo-cli_4.3.0</td>
+</tr>
+<tr>
+<td align="center">主题版本</td>
+<td align="center">NexT_8.12.0</td>
+</tr>
+<tr>
+<td align="center">hexo</td>
+<td align="center">5.4.2</td>
+</tr>
+<tr>
+<td align="center">waline</td>
+<td align="center">v2.6.1</td>
+</tr>
+</tbody></table>
+<p>next主题7.8.0不能正常安装</p>
+<h3 id="参考信息"><a href="#参考信息" class="headerlink" title="参考信息"></a>参考信息</h3><p><a href="https://qianfanguojin.top/2022/01/20/Hexo%E5%8D%9A%E5%AE%A2%E8%BF%9B%E9%98%B6%EF%BC%9A%E4%B8%BA-Next-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0-Waline-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">[1] 为博客添加waline评论系统</a></p>
+<p><a href="https://nobige.eu.org/post/20190718-hexoxiavalineguanbijingzhimougewenzhangyemianpinglun/">[2] 部分文章关闭评论</a></p>
+]]></content>
+      <categories>
+        <category>博客优化</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>博客添加github贡献日历</title>
+    <url>/2022/04/01/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0github%E8%B4%A1%E7%8C%AE%E6%97%A5%E5%8E%86/</url>
+    <content><![CDATA[<h3 id="日历插件"><a href="#日历插件" class="headerlink" title="日历插件"></a>日历插件</h3><p><del>来源于<a href="https://github.com/theme-next/theme-next-calendar">theme-next-calendar</a></del></p>
+<p>来源于<a href="https://zfe.space/">小冰大神</a> 做的插件 <a href="https://zfe.space/post/hexo-githubcalendar.html">文章在此处</a> , <a href="https://github.com/Zfour/hexo-github-calendar">github</a></p>
+]]></content>
+      <categories>
+        <category>博客优化</category>
       </categories>
   </entry>
 </search>

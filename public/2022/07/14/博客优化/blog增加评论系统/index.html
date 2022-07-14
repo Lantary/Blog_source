@@ -19,27 +19,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"lantary.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="日历插件来源于theme-next-calendar 来源于小冰大神 做的插件 文章在此处 , github">
+    <meta name="description" content="博客优化内容 为博客添加评论系统  优化方案博主千帆过烬，已经介绍的十分详细，这里具体方法不做详细论述。 版本信息   内容 版本    博客框架 hexo-cli_4.3.0   主题版本 NexT_8.12.0   hexo 5.4.2   waline v2.6.1   next主题7.8.0不能正常安装 参考信息[1] 为博客添加waline评论系统 [2] 部分文章关闭评论">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博客插件">
-<meta property="og:url" content="https://lantary.github.io/2022/04/01/%E5%8D%9A%E5%AE%A2%E6%8F%92%E4%BB%B6/index.html">
+<meta property="og:title" content="blog增加评论系统">
+<meta property="og:url" content="https://lantary.github.io/2022/07/14/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/blog%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="Lantary">
-<meta property="og:description" content="日历插件来源于theme-next-calendar 来源于小冰大神 做的插件 文章在此处 , github">
+<meta property="og:description" content="博客优化内容 为博客添加评论系统  优化方案博主千帆过烬，已经介绍的十分详细，这里具体方法不做详细论述。 版本信息   内容 版本    博客框架 hexo-cli_4.3.0   主题版本 NexT_8.12.0   hexo 5.4.2   waline v2.6.1   next主题7.8.0不能正常安装 参考信息[1] 为博客添加waline评论系统 [2] 部分文章关闭评论">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-07-12T08:16:45.863Z">
+<meta property="article:published_time" content="2022-07-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-14T02:09:31.663Z">
 <meta property="article:author" content="lantary">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://lantary.github.io/2022/04/01/%E5%8D%9A%E5%AE%A2%E6%8F%92%E4%BB%B6/">
+<link rel="canonical" href="https://lantary.github.io/2022/07/14/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/blog%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lantary.github.io/2022/04/01/%E5%8D%9A%E5%AE%A2%E6%8F%92%E4%BB%B6/","path":"2022/04/01/博客插件/","title":"博客插件"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lantary.github.io/2022/07/14/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/blog%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/","path":"2022/07/14/博客优化/blog增加评论系统/","title":"blog增加评论系统"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>博客插件 | Lantary</title>
+<title>blog增加评论系统 | Lantary</title>
   
 
 
@@ -141,7 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5%E5%8E%86%E6%8F%92%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">日历插件</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96%E5%86%85%E5%AE%B9"><span class="nav-number">1.</span> <span class="nav-text">博客优化内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88"><span class="nav-number">2.</span> <span class="nav-text">优化方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="nav-number">3.</span> <span class="nav-text">版本信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E4%BF%A1%E6%81%AF"><span class="nav-number">4.</span> <span class="nav-text">参考信息</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -156,13 +156,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
@@ -212,7 +212,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lantary.github.io/2022/04/01/%E5%8D%9A%E5%AE%A2%E6%8F%92%E4%BB%B6/">
+    <link itemprop="mainEntityOfPage" href="https://lantary.github.io/2022/07/14/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/blog%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.png">
@@ -225,12 +225,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="博客插件 | Lantary">
+      <meta itemprop="name" content="blog增加评论系统 | Lantary">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          博客插件
+          blog增加评论系统
         </h1>
 
         <div class="post-meta-container">
@@ -240,15 +240,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2022-04-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-04-01T00:00:00+08:00">2022-04-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-07-12 16:16:45" itemprop="dateModified" datetime="2022-07-12T16:16:45+08:00">2022-07-12</time>
+      <time title="创建时间：2022-07-14 00:00:00 / 修改时间：10:09:31" itemprop="dateCreated datePublished" datetime="2022-07-14T00:00:00+08:00">2022-07-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -256,7 +250,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
+          <a href="/categories/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/" itemprop="url" rel="index"><span itemprop="name">博客优化</span></a>
         </span>
     </span>
 
@@ -269,8 +263,8 @@
     </span>
     <span class="post-meta-item-text">Waline：</span>
   
-    <a title="waline" href="/2022/04/01/%E5%8D%9A%E5%AE%A2%E6%8F%92%E4%BB%B6/#waline" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" data-path="/2022/04/01/%E5%8D%9A%E5%AE%A2%E6%8F%92%E4%BB%B6/" itemprop="commentCount"></span>
+    <a title="waline" href="/2022/07/14/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/blog%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2022/07/14/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/blog%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -284,8 +278,37 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="日历插件"><a href="#日历插件" class="headerlink" title="日历插件"></a>日历插件</h1><p><del>来源于<a target="_blank" rel="noopener" href="https://github.com/theme-next/theme-next-calendar">theme-next-calendar</a></del></p>
-<p>来源于<a target="_blank" rel="noopener" href="https://zfe.space/">小冰大神</a> 做的插件 <a target="_blank" rel="noopener" href="https://zfe.space/post/hexo-githubcalendar.html">文章在此处</a> , <a target="_blank" rel="noopener" href="https://github.com/Zfour/hexo-github-calendar">github</a></p>
+        <h3 id="博客优化内容"><a href="#博客优化内容" class="headerlink" title="博客优化内容"></a>博客优化内容</h3><ul>
+<li>为博客添加评论系统</li>
+</ul>
+<h3 id="优化方案"><a href="#优化方案" class="headerlink" title="优化方案"></a>优化方案</h3><p>博主<a target="_blank" rel="noopener" href="https://qianfanguojin.top/">千帆过烬</a>，已经介绍的十分详细，这里具体方法不做详细论述。</p>
+<h3 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h3><table>
+<thead>
+<tr>
+<th align="center">内容</th>
+<th align="center">版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">博客框架</td>
+<td align="center">hexo-cli_4.3.0</td>
+</tr>
+<tr>
+<td align="center">主题版本</td>
+<td align="center">NexT_8.12.0</td>
+</tr>
+<tr>
+<td align="center">hexo</td>
+<td align="center">5.4.2</td>
+</tr>
+<tr>
+<td align="center">waline</td>
+<td align="center">v2.6.1</td>
+</tr>
+</tbody></table>
+<p>next主题7.8.0不能正常安装</p>
+<h3 id="参考信息"><a href="#参考信息" class="headerlink" title="参考信息"></a>参考信息</h3><p><a target="_blank" rel="noopener" href="https://qianfanguojin.top/2022/01/20/Hexo%E5%8D%9A%E5%AE%A2%E8%BF%9B%E9%98%B6%EF%BC%9A%E4%B8%BA-Next-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0-Waline-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">[1] 为博客添加waline评论系统</a></p>
+<p><a target="_blank" rel="noopener" href="https://nobige.eu.org/post/20190718-hexoxiavalineguanbijingzhimougewenzhangyemianpinglun/">[2] 部分文章关闭评论</a></p>
 
     </div>
 
@@ -303,7 +326,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://lantary.github.io/2022/04/01/%E5%8D%9A%E5%AE%A2%E6%8F%92%E4%BB%B6/" title="博客插件">https://lantary.github.io/2022/04/01/博客插件/</a>
+      <a href="https://lantary.github.io/2022/07/14/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/blog%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" title="blog增加评论系统">https://lantary.github.io/2022/07/14/博客优化/blog增加评论系统/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -316,11 +339,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2022/07/10/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/blog%E8%83%BD%E8%A2%AB%E6%90%9C%E7%B4%A2%E5%88%B0/" rel="prev" title="hexo框架下的博客提交至google搜索">
+                  <i class="fa fa-chevron-left"></i> hexo框架下的博客提交至google搜索
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/05/20/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/" rel="next" title="生物网络">
-                  生物网络 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -371,7 +394,7 @@
 
 
 
-<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"waline-server-dusky.vercel.app","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"请文明评论呀","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":true,"comment_count":true,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2022/04/01/%E5%8D%9A%E5%AE%A2%E6%8F%92%E4%BB%B6/"}</script>
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"waline-server-dusky.vercel.app","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"请文明评论呀","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":true,"comment_count":true,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2022/07/14/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/blog%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/"}</script>
 <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
 <script>
 document.addEventListener('page:loaded', () => {

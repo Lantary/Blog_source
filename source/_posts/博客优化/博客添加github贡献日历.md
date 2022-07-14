@@ -1,11 +1,11 @@
 ---
-title: 博客插件
+title: 博客添加github贡献日历
 categories:
-	- 其他
+	- 博客优化
 date: 2022-04-01
 ---
 
-# 日历插件
+### 日历插件
 
 ~~来源于[theme-next-calendar](https://github.com/theme-next/theme-next-calendar)~~
 
