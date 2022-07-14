@@ -56,19 +56,27 @@ pretty_urls:
 
 ![piture_5][p5]
 
+## 3.其他网站索引添加
+
+其他网站添加索引的方式与谷歌搜索类似，如果是bing则可以直接使用[[Google Search Console]][link1]的数据
 
 ## 版本信息
 ```
-博客框架 	hexo-cli_4.3.0
-主题		next
+博客框架		hexo-cli_4.3.0
+主题		next_7.8.0
 网站挂载于	github
 ```
+
+
+
+	
 
 ## 参考链接
 
 [[1] 解决验证问题](https://javahikers.github.io/2019/06/16/personal-blog-being-included-in-google/)
 
 [[2] 提交sitemap](https://zhuanlan.zhihu.com/p/100922816)
+
 
 [link1]: https://search.google.com/search-console/about
 
@@ -77,3 +85,5 @@ pretty_urls:
 [p3]: https://raw.githubusercontent.com/Lantary/Private_warehouses/main/hexo%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%8F%90%E4%BA%A4%E8%87%B3google%E6%90%9C%E7%B4%A2/p3.png
 [p4]: https://raw.githubusercontent.com/Lantary/Private_warehouses/main/hexo%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%8F%90%E4%BA%A4%E8%87%B3google%E6%90%9C%E7%B4%A2/p4.png
 [p5]: https://github.com/Lantary/Private_warehouses/blob/main/hexo%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%8F%90%E4%BA%A4%E8%87%B3google%E6%90%9C%E7%B4%A2/p5.png?raw=true
+
+
