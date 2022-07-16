@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>blog增加评论系统</title>
+    <url>/2022/07/14/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/blog%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h3 id="博客优化内容"><a href="#博客优化内容" class="headerlink" title="博客优化内容"></a>博客优化内容</h3><ul>
+<li>为博客添加评论系统</li>
+</ul>
+<h3 id="优化方案"><a href="#优化方案" class="headerlink" title="优化方案"></a>优化方案</h3><p>博主<a href="https://qianfanguojin.top/">千帆过烬</a>，已经介绍的十分详细，这里具体方法不做详细论述。</p>
+<h3 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h3><table>
+<thead>
+<tr>
+<th align="center">内容</th>
+<th align="center">版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">博客框架</td>
+<td align="center">hexo-cli_4.3.0</td>
+</tr>
+<tr>
+<td align="center">主题版本</td>
+<td align="center">NexT_8.12.0</td>
+</tr>
+<tr>
+<td align="center">hexo</td>
+<td align="center">5.4.2</td>
+</tr>
+<tr>
+<td align="center">waline</td>
+<td align="center">v2.6.1</td>
+</tr>
+</tbody></table>
+<p>next主题7.8.0不能正常安装</p>
+<h3 id="参考信息"><a href="#参考信息" class="headerlink" title="参考信息"></a>参考信息</h3><p><a href="https://qianfanguojin.top/2022/01/20/Hexo%E5%8D%9A%E5%AE%A2%E8%BF%9B%E9%98%B6%EF%BC%9A%E4%B8%BA-Next-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0-Waline-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">[1] 为博客添加waline评论系统</a></p>
+<p><a href="https://nobige.eu.org/post/20190718-hexoxiavalineguanbijingzhimougewenzhangyemianpinglun/">[2] 部分文章关闭评论</a></p>
+]]></content>
+      <categories>
+        <category>博客优化</category>
+      </categories>
+  </entry>
+  <entry>
     <title>hexo框架下的博客提交至google搜索</title>
     <url>/2022/07/10/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/blog%E8%83%BD%E8%A2%AB%E6%90%9C%E7%B4%A2%E5%88%B0/</url>
     <content><![CDATA[<h3 id="博客优化内容"><a href="#博客优化内容" class="headerlink" title="博客优化内容"></a>博客优化内容</h3><p>对于刚建立的博客来说，谷歌往往不能或者不会收录你的博客，为了使自己的博客可以被谷歌所检索到。我们需要主动向谷歌提供网址信息。</p>
@@ -33,10 +72,20 @@
       </categories>
   </entry>
   <entry>
+    <title>博客添加github贡献日历</title>
+    <url>/2022/04/01/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0github%E8%B4%A1%E7%8C%AE%E6%97%A5%E5%8E%86/</url>
+    <content><![CDATA[<h3 id="日历插件"><a href="#日历插件" class="headerlink" title="日历插件"></a>日历插件</h3><p><del>来源于<a href="https://github.com/theme-next/theme-next-calendar">theme-next-calendar</a></del></p>
+<p>来源于<a href="https://zfe.space/">小冰大神</a> 做的插件 <a href="https://zfe.space/post/hexo-githubcalendar.html">文章在此处</a> , <a href="https://github.com/Zfour/hexo-github-calendar">github</a></p>
+]]></content>
+      <categories>
+        <category>博客优化</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Rstudio自定义代码配色方案</title>
     <url>/2022/07/01/%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E9%97%AE%E9%A2%98/Rstudio%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BB%A3%E7%A0%81%E9%85%8D%E8%89%B2%E6%96%B9%E6%A1%88/</url>
-    <content><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Rsutido 中默认的代码配色方案变量和函数是没有区分的。所以想要一个自定义代码配色的方案</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>因为只需要区分开函数和变量，所以可以让便量为默认色-“白色”，而函数给一个高亮。<br>在Rstudio中，函数高亮是有可以直接实现的选项的。<br>选择 TOOL –&gt;&gt; Global Option –&gt;&gt; Code –&gt;&gt; Display 中，勾选Highlight R function call。</p>
+    <content><![CDATA[<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>Rsutido 中默认的代码配色方案变量和函数是没有区分的。所以想要一个自定义代码配色的方案</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>因为只需要区分开函数和变量，所以可以让便量为默认色-“白色”，而函数给一个高亮。<br>在Rstudio中，函数高亮是有可以直接实现的选项的。<br>选择 TOOL –&gt;&gt; Global Option –&gt;&gt; Code –&gt;&gt; Display 中，勾选Highlight R function call。</p>
 <p><img src="https://raw.githubusercontent.com/Lantary/Private_warehouses/main/Rstudio%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BB%A3%E7%A0%81%E9%85%8D%E8%89%B2%E6%96%B9%E6%A1%88_p1.png" alt="p1"></p>
 <p>如果只是需求将变量和函数名分开，那么到这里为止就结束了。<br>但是如果你对Rstudio默认主题中的函数高亮颜色不满意想要修改，那么可以通过以下方式。</p>
 <ol>
@@ -51,10 +100,10 @@
 <ol start="6">
 <li>更改文本开头的  <code>rs-theme-name:</code> 然后用Rstudio Add新设置的主题文件就可以了</li>
 </ol>
-<h2 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">操作系统		ubuntu22</span><br><span class="line">Rstudio		2022.02.3+492</span><br></pre></td></tr></table></figure>
+<h3 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">操作系统		ubuntu22</span><br><span class="line">Rstudio		2022.02.3+492</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p>[1] <a href="https://community.rstudio.com/t/colour-additional-functions-within-an-editor-theme/4428">https://community.rstudio.com/t/colour-additional-functions-within-an-editor-theme/4428</a></p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p>[1] <a href="https://community.rstudio.com/t/colour-additional-functions-within-an-editor-theme/4428">https://community.rstudio.com/t/colour-additional-functions-within-an-editor-theme/4428</a></p>
 ]]></content>
       <categories>
         <category>日常使用中的问题</category>
@@ -73,6 +122,36 @@
 <p>需要注意的是，这个方案的尝试中，我确实成功了。<br>但是也只是解决了pycharm中不能输入中文的问题。<br>光标不跟随问题仍不能解决。<br>并且按这个方案做完之后 pycharm 中 markdown 插件会出bug，直接失效。<br>这里写出来仅供参考。</p>
 <h2 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Distributor 		 Ubuntu 22.04 LTS  </span><br><span class="line">Codename: 		 jammy  </span><br><span class="line">架构: 			 x86_64  </span><br><span class="line">ibus框架：		 IBus 1.5.26</span><br><span class="line">ibus输入法：		 IBus 智能拼音 1.12.1</span><br><span class="line">pycharm:		 community_11.0.15</span><br></pre></td></tr></table></figure>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/m0_54032194/article/details/119081008">https://blog.csdn.net/m0_54032194/article/details/119081008</a></p>
+]]></content>
+      <categories>
+        <category>日常使用中的问题</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ubuntu系统下将matepad11作为副屏</title>
+    <url>/2022/07/16/%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E9%97%AE%E9%A2%98/ubuntu%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%B0%86matepad11%E4%BD%9C%E4%B8%BA%E5%89%AF%E5%B1%8F/</url>
+    <content><![CDATA[<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>电脑需要一个第二屏幕，而买来的平板暂时用不到。所以想要将平板作为电脑的副屏使用。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>这里提供的解决方案是基于软件deskreen而实现。deskreen软件是一款通过游览器共享屏幕的软件。在电脑端部署一个虚拟的显示器，然后用deskreen网络共享这个虚拟屏幕就可以实现分屏。</p>
+<ol>
+<li>deskreen下载安装 <a href="link2">[此处下载]</a> 下载linux的deb包后，cd到下载目录 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i deb的名字.deb</span><br></pre></td></tr></table></figure>
+ 打开deskreen，需要保证你的平板和电脑在同一个wifi下，然后部署完虚拟屏幕后进行，下一步操作。 <img src="https://deskreen.com/img/steps/1.jpg" alt="p1"> 如果是先进行虚拟屏幕部署，然后在打开deskreen，可能会因为deskreen开在虚拟屏幕而无法看到。</li>
+</ol>
+<ol start="2">
+<li><p>虚拟屏幕部署</p>
+<blockquote>
+<p>需要注意： 此虚拟部署方案适用于带集成显卡的inter芯片。Nvidia GPU 请看参考链接</p>
+</blockquote>
+<p> 下载<a href="link1">VDL Monitor</a>到系统。ubuntu下打开终端，cd到你喜欢的文件夹。输入如下命令：</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/dianariyanto/virtual-display-linux.git</span><br><span class="line"></span><br><span class="line">cd virtual-display-linux</span><br><span class="line"></span><br><span class="line">sudo chmod 777 vdl-monitor</span><br></pre></td></tr></table></figure>
+<p> 确定你电脑能配置的清晰度。通过 <code>xrandr</code> 命令查询电脑支持的清晰度。更改 <code>virtual-display-linux</code> 文件夹下的 <code>vdl-monitor.conf</code> 中的清晰度。</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    # config for screen 1</span><br><span class="line">    screen1=&quot;1366x768&quot;</span><br><span class="line"></span><br><span class="line">    # config for screen 2</span><br><span class="line">    #screen2=&quot;1366x768&quot;</span><br><span class="line">   ```    </span><br><span class="line">   </span><br><span class="line">3. 屏幕链接</span><br><span class="line"></span><br><span class="line">   更改完成后，用平板扫描deskreen的二维码进行链接。在电脑端允许后。</span><br><span class="line"></span><br><span class="line">    ![p2][p2]</span><br><span class="line">    </span><br><span class="line">    点击整个屏幕分享。此时会出现第二屏幕的选项，点击第二屏幕即可完成部署。</span><br><span class="line">    </span><br><span class="line">    ![p3][p3]</span><br><span class="line"></span><br><span class="line">### 版本信息</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>芯片          inter i5-7200U CPU @ 2.50GHz<br>系统          ubuntu 22.04<br>deskreen     deskreen_2.0.3_amd64<br>VDL          v0.1-alpha<br>```</p>
+</li>
+</ol>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a href="https://www.twblogs.net/a/5cb3844abd9eee48d788b399/?lang=zh-cn">[1] vnc, teamviewer, anydesk组件 实现方案</a></p>
+<p><a href="https://deskreen.com/lang-zh_CN#features">[2] DESKREEN</a></p>
+<p><a href="https://github.com/pavlobu/deskreen/discussions/86">[3] 虚拟屏幕部署方案</a></p>
+<p><a href="https://github.com/dianariyanto/virtual-display-linux/issues/9#issuecomment-786389065">[4] Nvidia GPU虚拟屏幕部署方案</a></p>
 ]]></content>
       <categories>
         <category>日常使用中的问题</category>
@@ -422,55 +501,6 @@ lty                 -改变标签线的类型, 可以设置通过与plot图像�
       <categories>
         <category>生物信息学</category>
         <category>生物网络</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>blog增加评论系统</title>
-    <url>/2022/07/14/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/blog%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<h3 id="博客优化内容"><a href="#博客优化内容" class="headerlink" title="博客优化内容"></a>博客优化内容</h3><ul>
-<li>为博客添加评论系统</li>
-</ul>
-<h3 id="优化方案"><a href="#优化方案" class="headerlink" title="优化方案"></a>优化方案</h3><p>博主<a href="https://qianfanguojin.top/">千帆过烬</a>，已经介绍的十分详细，这里具体方法不做详细论述。</p>
-<h3 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h3><table>
-<thead>
-<tr>
-<th align="center">内容</th>
-<th align="center">版本</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">博客框架</td>
-<td align="center">hexo-cli_4.3.0</td>
-</tr>
-<tr>
-<td align="center">主题版本</td>
-<td align="center">NexT_8.12.0</td>
-</tr>
-<tr>
-<td align="center">hexo</td>
-<td align="center">5.4.2</td>
-</tr>
-<tr>
-<td align="center">waline</td>
-<td align="center">v2.6.1</td>
-</tr>
-</tbody></table>
-<p>next主题7.8.0不能正常安装</p>
-<h3 id="参考信息"><a href="#参考信息" class="headerlink" title="参考信息"></a>参考信息</h3><p><a href="https://qianfanguojin.top/2022/01/20/Hexo%E5%8D%9A%E5%AE%A2%E8%BF%9B%E9%98%B6%EF%BC%9A%E4%B8%BA-Next-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0-Waline-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">[1] 为博客添加waline评论系统</a></p>
-<p><a href="https://nobige.eu.org/post/20190718-hexoxiavalineguanbijingzhimougewenzhangyemianpinglun/">[2] 部分文章关闭评论</a></p>
-]]></content>
-      <categories>
-        <category>博客优化</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>博客添加github贡献日历</title>
-    <url>/2022/04/01/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0github%E8%B4%A1%E7%8C%AE%E6%97%A5%E5%8E%86/</url>
-    <content><![CDATA[<h3 id="日历插件"><a href="#日历插件" class="headerlink" title="日历插件"></a>日历插件</h3><p><del>来源于<a href="https://github.com/theme-next/theme-next-calendar">theme-next-calendar</a></del></p>
-<p>来源于<a href="https://zfe.space/">小冰大神</a> 做的插件 <a href="https://zfe.space/post/hexo-githubcalendar.html">文章在此处</a> , <a href="https://github.com/Zfour/hexo-github-calendar">github</a></p>
-]]></content>
-      <categories>
-        <category>博客优化</category>
       </categories>
   </entry>
 </search>

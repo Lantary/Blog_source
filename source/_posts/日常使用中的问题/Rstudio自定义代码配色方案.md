@@ -5,10 +5,10 @@ categories:
 date: 2022-07-01
 ---
 
-## 问题描述
+### 问题描述
 Rsutido 中默认的代码配色方案变量和函数是没有区分的。所以想要一个自定义代码配色的方案
 
-## 解决方案
+### 解决方案
 因为只需要区分开函数和变量，所以可以让便量为默认色-"白色"，而函数给一个高亮。
 在Rstudio中，函数高亮是有可以直接实现的选项的。
 选择 TOOL -->> Global Option -->> Code -->> Display 中，勾选Highlight R function call。
@@ -30,14 +30,14 @@ Rsutido 中默认的代码配色方案变量和函数是没有区分的。所以
 6. 更改文本开头的  `rs-theme-name:` 然后用Rstudio Add新设置的主题文件就可以了
 
 
-## 版本信息
+### 版本信息
 ```
 操作系统		ubuntu22
 Rstudio		2022.02.3+492
 ```
 
 
-## 参考链接
+### 参考链接
 [1] https://community.rstudio.com/t/colour-additional-functions-within-an-editor-theme/4428
 
 
