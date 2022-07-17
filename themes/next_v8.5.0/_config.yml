@@ -409,15 +409,7 @@ github_banner:
   permalink: https://github.com/yourname
   title: Follow me on GitHub
 
-# 云日历插件 来自于https://github.com/theme-next/theme-next-calendar
-CloudCalendar:
-  enable: true
-  language: zh-CN
-  single: true
-  root: /calendar/
-  calendarCdn: //cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/calendar.min.js
-  langCdn: //cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/languages.min.js
-  #disableSidebar: false
+
 
 # ---------------------------------------------------------------
 # Font Settings
@@ -907,6 +899,16 @@ vendors:
 css: css
 js: js
 images: images
+
+# 云日历插件 来自于https://github.com/theme-next/theme-next-calendar
+CloudCalendar:
+  enable: false
+  language: zh-CN
+  single: true
+  root: /calendar/
+  calendarCdn: //cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/calendar.min.js
+  langCdn: //cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/languages.min.js
+  #disableSidebar: false
 
 # Waline
 # 添加评论系统

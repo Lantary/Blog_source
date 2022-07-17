@@ -142,12 +142,19 @@
 <p>需要注意： 此虚拟部署方案适用于带集成显卡的inter芯片。Nvidia GPU 请看参考链接</p>
 </blockquote>
 <p> 下载<a href="link1">VDL Monitor</a>到系统。ubuntu下打开终端，cd到你喜欢的文件夹。输入如下命令：</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/dianariyanto/virtual-display-linux.git</span><br><span class="line"></span><br><span class="line">cd virtual-display-linux</span><br><span class="line"></span><br><span class="line">sudo chmod 777 vdl-monitor</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/dianariyanto/virtual-display-linux.git</span><br><span class="line"></span><br><span class="line">cd virtual-display-linux</span><br><span class="line"></span><br><span class="line">sudo chmod 777 vdl-monitor</span><br></pre></td></tr></table></figure>
+
 <p> 确定你电脑能配置的清晰度。通过 <code>xrandr</code> 命令查询电脑支持的清晰度。更改 <code>virtual-display-linux</code> 文件夹下的 <code>vdl-monitor.conf</code> 中的清晰度。</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    # config for screen 1</span><br><span class="line">    screen1=&quot;1366x768&quot;</span><br><span class="line"></span><br><span class="line">    # config for screen 2</span><br><span class="line">    #screen2=&quot;1366x768&quot;</span><br><span class="line">   ```    </span><br><span class="line">   </span><br><span class="line">3. 屏幕链接</span><br><span class="line"></span><br><span class="line">   更改完成后，用平板扫描deskreen的二维码进行链接。在电脑端允许后。</span><br><span class="line"></span><br><span class="line">    ![p2][p2]</span><br><span class="line">    </span><br><span class="line">    点击整个屏幕分享。此时会出现第二屏幕的选项，点击第二屏幕即可完成部署。</span><br><span class="line">    </span><br><span class="line">    ![p3][p3]</span><br><span class="line"></span><br><span class="line">### 版本信息</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>芯片          inter i5-7200U CPU @ 2.50GHz<br>系统          ubuntu 22.04<br>deskreen     deskreen_2.0.3_amd64<br>VDL          v0.1-alpha<br>```</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># config for screen 1</span><br><span class="line">screen1=&quot;1366x768&quot;</span><br><span class="line"></span><br><span class="line"># config for screen 2</span><br><span class="line">#screen2=&quot;1366x768&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>屏幕链接</p>
+<p>更改完成后，用平板扫描deskreen的二维码进行链接。在电脑端允许后。</p>
+<p> <img src="https://deskreen.com/img/steps/3.jpg" alt="p2"></p>
+<p> 点击整个屏幕分享。此时会出现第二屏幕的选项，点击第二屏幕即可完成部署。</p>
+<p> <img src="https://deskreen.com/img/steps/4.jpg" alt="p3"></p>
 </li>
 </ol>
+<h3 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">芯片          inter i5-7200U CPU @ 2.50GHz</span><br><span class="line">系统          ubuntu 22.04</span><br><span class="line">deskreen     deskreen_2.0.3_amd64 </span><br><span class="line">VDL          v0.1-alpha</span><br></pre></td></tr></table></figure>
 <h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a href="https://www.twblogs.net/a/5cb3844abd9eee48d788b399/?lang=zh-cn">[1] vnc, teamviewer, anydesk组件 实现方案</a></p>
 <p><a href="https://deskreen.com/lang-zh_CN#features">[2] DESKREEN</a></p>
 <p><a href="https://github.com/pavlobu/deskreen/discussions/86">[3] 虚拟屏幕部署方案</a></p>

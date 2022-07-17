@@ -142,7 +142,7 @@ sidebar:
   # Sidebar Position.
   position: left
   #position: right
-  
+
   # 手动定义侧边栏宽度. 如果注释，将默认为：
   # Muse | Mist: 320
   # Pisces | Gemini: 240
@@ -403,14 +403,14 @@ github_banner:
 
 # 云日历插件 来自于https://github.com/theme-next/theme-next-calendar
 CloudCalendar:
-  enable: true
+  enable: false
   language: zh-CN
   single: true
   root: /calendar/
   calendarCdn: //cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/calendar.min.js
   langCdn: //cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/languages.min.js
   #disableSidebar: false
-  
+
 # ---------------------------------------------------------------
 # Font Settings
 # See: https://theme-next.org/docs/theme-settings/#Fonts-Customization

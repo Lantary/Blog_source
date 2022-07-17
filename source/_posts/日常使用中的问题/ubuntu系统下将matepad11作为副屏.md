@@ -29,25 +29,29 @@ date: 2022-07-16
 
 
 2. 虚拟屏幕部署
+
     > 需要注意： 此虚拟部署方案适用于带集成显卡的inter芯片。Nvidia GPU 请看参考链接
 
     下载[VDL Monitor](link1)到系统。ubuntu下打开终端，cd到你喜欢的文件夹。输入如下命令：
-    ```
+
+   ```
    git clone https://github.com/dianariyanto/virtual-display-linux.git
    
    cd virtual-display-linux
    
    sudo chmod 777 vdl-monitor
    ```
+   
     确定你电脑能配置的清晰度。通过 `xrandr` 命令查询电脑支持的清晰度。更改 `virtual-display-linux` 文件夹下的 `vdl-monitor.conf` 中的清晰度。
  
-    ```
+   ```
     # config for screen 1
     screen1="1366x768"
 
     # config for screen 2
     #screen2="1366x768"
-   ```    
+   ```
+       
    
 3. 屏幕链接
 
@@ -84,4 +88,4 @@ VDL          v0.1-alpha
 
 [p1]: https://deskreen.com/img/steps/1.jpg
 [p2]: https://deskreen.com/img/steps/3.jpg
-[p3]: https://deskreen.com/img/steps/5.jpg
+[p3]: https://deskreen.com/img/steps/4.jpg
